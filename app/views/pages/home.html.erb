@@ -1,2 +1,10 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<p>
+  <ul>
+    <% @cars.cars.each do |car| %>
+     <li> <%= car.join %> </li>
+    <% end %>
+  </ul>
+</p>

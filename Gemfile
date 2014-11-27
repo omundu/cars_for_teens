@@ -10,6 +10,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sqlite3'
 
+gem 'nokogiri'
+
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'spring',        group: :development

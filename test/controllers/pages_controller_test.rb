@@ -10,5 +10,10 @@ class PagesControllerTest < ActionController::TestCase
     get :about
     assert_response :success
   end
+  
+  test "should get help" do
+    get :help
+    assert_response :success
+  end
 
 end

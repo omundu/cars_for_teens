@@ -4,7 +4,7 @@
 <p>
   <ul>
     <% @cars.cars.each do |car| %>
-     <li> <%= car.join %> </li>
+     <li> <%= car.join(" :: ") %> </li>
     <% end %>
   </ul>
 </p>

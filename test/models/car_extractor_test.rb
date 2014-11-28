@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class CarExtractorTest < ActiveSupport::TestCase
-  test "should remove empty arrays" do
+  test "get car array" do
+    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr><tr><td>five</td><td>six</td></tr></table></body></html>")
+    expected_result = [["one", "two", "two"], ["three", "four", "four"], ["five", "six", "six"]]
+    
+    assert_equal CarExtractor.new.get_car_array(html_doc), expected_result
+  end
+  
+  test "remove empty arrays" do
     array1 = [[], [1, 2, 3], [4, 5, 6], [7, 8, 9]]
     array2 = [[1, 2, 3], [], [4, 5, 6], [7, 8, 9]]
     array3 = [[1, 2, 3], [4, 5, 6], [], [7, 8, 9]]
@@ -15,7 +22,7 @@ class CarExtractorTest < ActiveSupport::TestCase
     end
   end
   
-  test "should handle empty arrays" do
+  test "handle empty arrays" do
     array1 = [[]]
     array2 = [[], [], []]
     array3 = []
@@ -23,5 +30,21 @@ class CarExtractorTest < ActiveSupport::TestCase
     [array1, array2, array3].each do |test_array|
       assert_equal CarExtractor.new.remove_empty_arrays(test_array), []
     end
+  end
+  
+  test "select by elements" do
+    html_doc = Nokogiri::HTML("<html><body><ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul></body></html>")
+    extracted = CarExtractor.new.select_by_element(html_doc, "li").map(&:content)
+    
+    assert_equal extracted, ["1", "2", "3", "4", "5", "6"]
+  end
+  
+  test "select data cells" do
+    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr><tr><td>five</td><td>six</td></tr></table></body></html>")
+    selected = CarExtractor.new.select_data_cells(html_doc)
+  end
+  
+  test "extract car information" do
+    
   end
 end

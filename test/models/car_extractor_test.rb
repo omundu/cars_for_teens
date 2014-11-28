@@ -20,7 +20,7 @@ class CarExtractorTest < ActiveSupport::TestCase
     array2 = [[], [], []]
     array3 = []
     
-    [].each do |test_array|
+    [array1, array2, array3].each do |test_array|
       assert_equal CarExtractor.new.remove_empty_arrays(test_array), []
     end
   end

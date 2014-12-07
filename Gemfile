@@ -21,6 +21,7 @@ group :test do
   gem 'mini_backtrace',     '0.1.3'
   gem 'guard-minitest',     '2.3.1'
   gem 'minitest-osx'
+  gem 'fakeweb'
 end
 
 # Use ActiveModel has_secure_password

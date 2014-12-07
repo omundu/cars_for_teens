@@ -2,12 +2,18 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <p>
+  <%#= car_information(@cars.cars) %>
+  <% @garage.cars.each do |car| %>
+   <li> <%= car.join(", ") %> </li>
+  <% end%>
+  <!--
   <ul>
-    <% @cars.cars.each do |car| %>
-     <!-- <li> <%= car.join(" :: ") %> </li> -->
+    <% @garage.cars.each do |car| %>
+     <li> <%= car.join(",") %> </li>
      <% vehicle, year, price = car.first.split, car[1], car.last %>
      <% manufacturer, *make = vehicle %>
      <li> <%= manufacturer %>
+       
        <ul>
          <li><%= make.join(" ") %></li>
          <li><%= year %></li>
@@ -16,7 +22,12 @@
      </li>
     <% end %>
   </ul>
+    -->
 </p>
 
 
-<%#= @cars.cars.each{|x| ca, year = x.first.split, x[1]; man, *make = ca; puts "#{man}\n\t#{make.join(" ")}\n\t#{year}"} %>
+<%#= @garage.cars.each{|x| ca, year = x.first.split, x[1]; man, *make = ca; puts "#{man}\n\t#{make.join(" ")}\n\t#{year}"} %>
+
+Guys?!
+
+Guys!?

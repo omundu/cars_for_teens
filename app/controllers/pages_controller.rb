@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
     @title = "Home"
+    @garage = CarExtractor.new
   end
 
   def about

@@ -1,2 +1,33 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<p>
+  <%#= car_information(@cars.cars) %>
+  <% @garage.cars.each do |car| %>
+   <li> <%= car.join(", ") %> </li>
+  <% end%>
+  <!--
+  <ul>
+    <% @garage.cars.each do |car| %>
+     <li> <%= car.join(",") %> </li>
+     <% vehicle, year, price = car.first.split, car[1], car.last %>
+     <% manufacturer, *make = vehicle %>
+     <li> <%= manufacturer %>
+       
+       <ul>
+         <li><%= make.join(" ") %></li>
+         <li><%= year %></li>
+         <li><%= price %></li>
+       </ul>
+     </li>
+    <% end %>
+  </ul>
+    -->
+</p>
+
+
+<%#= @garage.cars.each{|x| ca, year = x.first.split, x[1]; man, *make = ca; puts "#{man}\n\t#{make.join(" ")}\n\t#{year}"} %>
+
+Guys?!
+
+Guys!?

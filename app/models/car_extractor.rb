@@ -27,7 +27,20 @@ class CarExtractor
   end
   
   def extract_car_information(sanitized_data)
-    sanitized_data.collect{|row| [row.first.content, row[1].content, row.last.content]}
+    sanitized_data.collect{|row| Car.new(construct_car_information(row))}
+  end
+  
+  def construct_car_information(row)
+    vehicle = row.first.content.split
+    manufacturer, *model = vehicle
+    year, extra_information = row[1].content.split(";")
+    {
+      manufacturer: manufacturer,
+      model: model.join(" "),
+      year: year,
+      suggested_price: row.last.content,
+      extra_information: extra_information
+    }
   end
   
   private

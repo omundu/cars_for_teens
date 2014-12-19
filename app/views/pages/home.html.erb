@@ -1,33 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Cars For Teens</h1>
 
-<p>
-  <%#= car_information(@cars.cars) %>
-  <% @garage.cars.each do |car| %>
-   <li> <%= car.join(", ") %> </li>
-  <% end%>
-  <!--
-  <ul>
-    <% @garage.cars.each do |car| %>
-     <li> <%= car.join(",") %> </li>
-     <% vehicle, year, price = car.first.split, car[1], car.last %>
-     <% manufacturer, *make = vehicle %>
-     <li> <%= manufacturer %>
-       
-       <ul>
-         <li><%= make.join(" ") %></li>
-         <li><%= year %></li>
-         <li><%= price %></li>
-       </ul>
-     </li>
-    <% end %>
-  </ul>
-    -->
-</p>
+<p>All information based on data that was accurate on July 1st 2014</p>
 
-
-<%#= @garage.cars.each{|x| ca, year = x.first.split, x[1]; man, *make = ca; puts "#{man}\n\t#{make.join(" ")}\n\t#{year}"} %>
-
-Guys?!
-
-Guys!?
+<% @garage.cars.sort{|x,y| x.manufacturer <=> y.manufacturer}.each do |car| %>
+  <div class="car"> 
+    <%= car.name %><br />
+    <%= car.year %><br />
+    Base Price: <%= car.suggested_price %><br />
+    <%= car.extra_information.nil? ? "" : "*#{car.extra_information}" %>
+  </div>
+<% end%>

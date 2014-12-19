@@ -1,3 +1,14 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  margin: 30px;
+}
+
+.car {
+  float: left;
+  padding: 10px 30px;
+  width: 170px;
+  height: 80px;
+}

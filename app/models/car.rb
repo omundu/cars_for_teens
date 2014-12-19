@@ -9,4 +9,8 @@ class Car
     @extra_information = car[:extra_information]
   end
   
+  def name
+    "#{@manufacturer} #{@model}"
+  end
+  
 end

@@ -34,6 +34,7 @@ class CarExtractor
     vehicle = row.first.content.split
     manufacturer, *model = vehicle
     year, extra_information = row[1].content.split(";")
+    
     {
       manufacturer: manufacturer,
       model: model.join(" "),

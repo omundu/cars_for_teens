@@ -38,7 +38,7 @@ class CarExtractor
       manufacturer: manufacturer,
       model: model.join(" "),
       year: year,
-      suggested_price: row.last.content,
+      suggested_price: row.last.content.delete("$,").to_i,
       extra_information: extra_information
     }
   end

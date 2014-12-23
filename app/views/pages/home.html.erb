@@ -5,7 +5,7 @@
 <% @garage.cars.sort{|x,y| x.manufacturer <=> y.manufacturer}.each do |car| %>
   <div class="car"> 
     <%= car.name %><br />
-    <%= car.year %><br />
+    <%= car.model_years %><br />
     Base Price: $<%= number_with_delimiter(car.suggested_price, :delimiter => ',') %><br />
     <%= car.extra_information.nil? ? "" : "*#{car.extra_information}" %>
   </div>

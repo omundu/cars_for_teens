@@ -33,12 +33,12 @@ class CarExtractor
   def construct_car_information(row)
     vehicle = row.first.content.split
     manufacturer, *model = vehicle
-    year, extra_information = row[1].content.split(";")
+    years, extra_information = row[1].content.split(";")
     
     {
       manufacturer: manufacturer,
       model: model.join(" "),
-      year: extract_years(year),
+      years: extract_years(years),
       suggested_price: row.last.content.delete("$,").to_i,
       extra_information: extra_information
     }

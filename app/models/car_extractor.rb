@@ -38,10 +38,24 @@ class CarExtractor
     {
       manufacturer: manufacturer,
       model: model.join(" "),
-      year: year,
+      year: extract_years(year),
       suggested_price: row.last.content.delete("$,").to_i,
       extra_information: extra_information
     }
+  end
+  
+  def extract_years(year)
+    latest_year = 2014
+    
+    case year.length
+    when 4
+      Array(year.to_i)
+    when 7
+      first, last = year.split('-').map(&:to_i)
+      Array(first.upto(last+2000))
+    else
+      Array(year.split.first.to_i.upto(latest_year))
+    end
   end
   
   private

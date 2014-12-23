@@ -55,4 +55,15 @@ class CarExtractorTest < ActiveSupport::TestCase
   test "extract car information" do
     skip("need to understand the data output")
   end
+  
+  test "extract years" do
+    garage = CarExtractor.new
+    y1 = "2009"
+    y2 = "2010-11"
+    y3 = "2010 and later"
+    
+    assert_equal  [2009], garage.extract_years(y1)
+    assert_equal  [2010, 2011], garage.extract_years(y2)
+    assert_equal  [2010, 2011, 2012, 2013, 2014], garage.extract_years(y3)
+  end
 end

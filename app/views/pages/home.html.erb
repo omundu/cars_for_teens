@@ -2,7 +2,7 @@
 
 <p>All information based on data that was accurate on July 1st 2014</p>
 
-<% @garage.cars.sort{|x,y| x.manufacturer <=> y.manufacturer}.each do |car| %>
+<% @garage.cars.sort_by{|car| [car.name, car.suggested_price]}.each do |car| %>
   <div class="car"> 
     <%= car.name %><br />
     <%= car.model_years %><br />

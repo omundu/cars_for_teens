@@ -33,14 +33,29 @@ class CarExtractor
   def construct_car_information(row)
     vehicle = row.first.content.split
     manufacturer, *model = vehicle
-    year, extra_information = row[1].content.split(";")
+    years, extra_information = row[1].content.split(";")
+    
     {
       manufacturer: manufacturer,
       model: model.join(" "),
-      year: year,
-      suggested_price: row.last.content,
+      years: extract_years(years),
+      suggested_price: row.last.content.delete("$,").to_i,
       extra_information: extra_information
     }
+  end
+  
+  def extract_years(year)
+    latest_year = 2014
+    
+    case year.length
+    when 4
+      Array(year.to_i)
+    when 7
+      first, last = year.split('-').map(&:to_i)
+      Array(first.upto(last+2000))
+    else
+      Array(year.split.first.to_i.upto(latest_year))
+    end
   end
   
   private

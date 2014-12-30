@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sqlite3'
 
 gem 'nokogiri'
+gem 'foundation-rails'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

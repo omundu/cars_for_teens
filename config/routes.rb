@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'about'=> 'pages#about'
   get 'help'=> 'pages#help'
+  
+  get 'manufacturers' => 'manufacturer#index'
+  get 'manufacturer/:manufacturer' => 'manufacturer#show', as: :manufacturer
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

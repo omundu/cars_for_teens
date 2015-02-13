@@ -1,7 +1,7 @@
 <%= content_tag :h1, @title %>
 
 <% @cars.uniq(&:name).sort{|cara, carb| cara.model <=> carb.model}.each do |car| %>
-  <div class="car"> 
-    <%= car.model %><br />
+  <div class="car">
+    <%= link_to car.model, model_path(car.manufacturer, car.model) %>
   </div>
 <% end %>

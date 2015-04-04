@@ -20,6 +20,10 @@ module PagesHelper
     end
   end
   
+  def car_id(car_value)
+    car_value > 10000 ? "gooder" : "good"
+  end
+  
 end
 
 # arr = ['a','b','c']

@@ -2,13 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
+#page-content {
   margin: 30px;
 }
 
-.car {
-  float: left;
-  padding: 10px 30px;
-  width: 170px;
-  height: 80px;
+.tabs .tab-title {
+  width: 33%;
 }
+
+.tabs {
+  padding: 10px 0;
+  margin: 1;
+}
+
+//.car {
+//  float: left;
+//  padding: 10px 30px;
+//  width: 170px;
+//  height: 80px;
+//}

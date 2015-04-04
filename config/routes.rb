@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'about'=> 'pages#about'
-  get 'help'=> 'pages#help'
+  get 'about'=> 'pages#about', as: :about
+  get 'help'=> 'pages#help', as: :help
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

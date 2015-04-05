@@ -1,0 +1,7 @@
+<%= content_tag :h1, @title %>
+
+<% @years.sort.each do |year| %>
+  <div class="car">
+    <%= link_to year, car_path(params[:manufacturer], params[:model], year) %>
+  </div>
+<% end %>

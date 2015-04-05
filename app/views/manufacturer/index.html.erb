@@ -1,0 +1,5 @@
+<% @manufacturers.sort.each do |manufacturer| %>
+  <div class="car">
+    <%= link_to manufacturer, manufacturer_url(manufacturer) %>
+  </div>
+<% end %>

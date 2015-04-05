@@ -1,5 +1,10 @@
 <%= content_tag :h1, @title %>
 
+<nav class="breadcrumbs">
+  <%= link_to "Manufacturers", manufacturers_path %>
+  <%= link_to params[:manufacturer], manufacturer_path(params[:manufacturer]), class: "current" %>
+</nav>
+
 <% @cars.uniq(&:name).sort{|cara, carb| cara.model <=> carb.model}.each do |car| %>
   <div class="car">
     <%= link_to car.model, model_path(car.manufacturer, car.model) %>

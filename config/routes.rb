@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  
+  get 'about'=> 'pages#about', as: :about
+  get 'help'=> 'pages#help', as: :help
 
-  get 'about'=> 'pages#about'
-  get 'help'=> 'pages#help'
-
-  get 'manufacturers' => 'manufacturer#index'
+  get 'manufacturers' => 'manufacturer#index', as: :manufacturers
   get 'manufacturer/:manufacturer' => 'manufacturer#show', as: :manufacturer
 
   get 'manufacturer/:manufacturer/:model' => 'car#model', as: :model

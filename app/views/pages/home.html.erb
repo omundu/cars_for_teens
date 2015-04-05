@@ -1,45 +1,42 @@
-<div id="page-content">
-  
-  <h1>The 2014 IIHS Cars for Teens</h1>
+<h1>The 2014 IIHS Cars for Teens</h1>
 
-  <p>All information based on data that was accurate on July 1st 2014</p>
+<p>All information based on data that was accurate on July 1st 2014</p>
 
-  <ul class="tabs" data-tab>
-    <li class="tab-title active"><a href="#all">All Cars</a></li>
-    <li class="tab-title"><a href="#good">Under $10,000 Base</a></li>
-    <li class="tab-title"><a href="#better">Over $10,000 Base</a></li>
-  </ul>
-  
-  <div class="tabs-content">
-    <div class="content active" id="all">
-      <p>
-        These are all the cars models that made the list, each one brings a great balance between safety and value for money.
-      </p>
-      
-      <% @cars.each do |car| %>
-        <%= render partial: 'car_details', locals: {car: car} %>
-      <% end %>
-    </div>
+<ul class="tabs" data-tab>
+  <li class="tab-title active"><a href="#all">All Cars</a></li>
+  <li class="tab-title"><a href="#good">Under $10,000 Base</a></li>
+  <li class="tab-title"><a href="#better">Over $10,000 Base</a></li>
+</ul>
+
+<div class="tabs-content">
+  <div class="content active" id="all">
+    <p>
+      These are all the cars models that made the list, each one brings a great balance between safety and value for money.
+    </p>
     
-    <div class="content" id="good">
-      <p>
-        These are competively price and offer good value for money.
-      </p>
-      
-      <% @cars.reject{|car| car if car.suggested_price > 10000}.each do |car| %>
-        <%= render partial: 'car_details', locals: {car: car} %>
-      <% end %>
-    </div>
-    
-    <div class="content" id="better">
-      <p>
-        Though more expensive, these have more to offer in terms of features and residual value.
-      </p>
-      
-      <% @cars.reject{|car| car if car.suggested_price <= 10000}.each do |car| %>
-        <%= render partial: 'car_details', locals: {car: car} %>
-      <% end %>
-    </div>
+    <% @cars.each do |car| %>
+      <%= render partial: 'car_details', locals: {car: car} %>
+    <% end %>
   </div>
   
+  <div class="content" id="good">
+    <p>
+      These are competively price and offer good value for money.
+    </p>
+    
+    <% @cars.reject{|car| car if car.suggested_price > 10000}.each do |car| %>
+      <%= render partial: 'car_details', locals: {car: car} %>
+    <% end %>
+  </div>
+  
+  <div class="content" id="better">
+    <p>
+      Though more expensive, these have more to offer in terms of features and residual value.
+    </p>
+    
+    <% @cars.reject{|car| car if car.suggested_price <= 10000}.each do |car| %>
+      <%= render partial: 'car_details', locals: {car: car} %>
+    <% end %>
+  </div>
 </div>
+  

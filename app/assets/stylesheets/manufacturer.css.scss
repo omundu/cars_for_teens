@@ -1,3 +1,46 @@
 // Place all the styles related to the manufacturer controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.logo {
+  background-image: url(logo_spritesheet.png);
+  background-repeat: no-repeat;
+  display: block;
+  width: 200px;
+  height: 200px;
+  text-indent:-9999px;
+  margin: 10px 20px;
+  float: left;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  &:hover{
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+  }
+}
+#acura {background-position: 0px 0px;}
+#audi {background-position: 0px -200px;}
+#bmw {background-position: 0px -400px;}
+#buick {background-position: -200px 0px;}
+#chevrolet {background-position: -200px -200px;}
+#chrysler {background-position: -200px -400px;}
+#dodge {background-position: -400px  0px;}
+#ford {background-position: -400px -200px;}
+#gmc {background-position: -400px -400px;}
+#honda {background-position: -600px  0px;}
+#hyundai {background-position: -600px -200px;}
+#infiniti {background-position: -600px -400px;}
+#kia {background-position: -800px  0px;}
+#lincoln {background-position: -800px -200px;}
+#mazda {background-position: -800px -400px;}
+#mercedes-benz {background-position: -1000px  0px;}
+#mercury {background-position: -1000px -200px;}
+#mitsubishi {background-position: -1000px -400px;}
+#nissan {background-position: -1200px  0px;}
+#saab {background-position: -1200px -200px;}
+#saturn {background-position: -1200px -400px;}
+#subaru {background-position: -1400px  0px;}
+#suzuki {background-position: -1400px -200px;}
+#toyota {background-position: -1400px -400px;}
+#volkswagen {background-position: -1600px  0px;}
+#volvo {background-position: -1600px -200px;}

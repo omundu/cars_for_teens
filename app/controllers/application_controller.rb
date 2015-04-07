@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def cars
-    CarExtractor.new.cars
+    Rails.cache.fetch("garage", expires_in: 7.days) do
+      CarExtractor.new.cars
+    end
   end
 end

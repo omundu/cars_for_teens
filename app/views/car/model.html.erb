@@ -1,13 +1,16 @@
-<%= content_tag :h1, @title %>
+<%= content_tag(:span, "", :class => "manufacturer_logo", :id => params[:manufacturer].downcase) %>
 
-<nav class="breadcrumbs">
-  <%= link_to "Manufacturers", manufacturers_path %>
-  <%= link_to params[:manufacturer], manufacturer_path(params[:manufacturer]) %>
-  <%= link_to params[:model], model_path(params[:manufacturer], params[:model]), class: "current" %>
-</nav>
+<div id="cars">
+  <%= content_tag :h1, @title %>
+  <nav class="breadcrumbs">
+    <%= link_to "Manufacturers", manufacturers_path %>
+    <%= link_to params[:manufacturer], manufacturer_path(params[:manufacturer]) %>
+    <%= link_to params[:model], model_path(params[:manufacturer], params[:model]), class: "current" %>
+  </nav>
 
-<% @years.sort.each do |year| %>
-  <div class="car">
-    <%= link_to year, car_path(params[:manufacturer], params[:model], year) %>
-  </div>
-<% end %>
+  <% @years.sort.each do |year| %>
+    <div class="car">
+      <%= link_to year, car_path(params[:manufacturer], params[:model], year) %>
+    </div>
+  <% end %>
+</div>

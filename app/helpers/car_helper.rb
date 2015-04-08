@@ -15,7 +15,9 @@ module CarHelper
   
   def stanitze_model_names
     # we need to remove "sedan" and join with underscore
-    model = params[:model].split(" ").reject{|word| word == "sedan"}.join("_").gsub("3-series", "3_Series")
+    model = params[:model].split(" ").reject{|word| word == "sedan" || word == "Tribeca/B9"}.join("_").gsub("3-series", "3_Series")
+    puts model
+    model
   end
     
 end

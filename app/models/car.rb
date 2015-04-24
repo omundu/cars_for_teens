@@ -1,12 +1,12 @@
 class Car
   attr_reader :manufacturer, :model, :years, :suggested_price, :extra_information
   
-  def initialize(car)
-    @manufacturer = car[:manufacturer]
-    @model = car[:model]
-    @years = car[:years]
-    @suggested_price = car[:suggested_price]
-    @extra_information = car[:extra_information]
+  def initialize(car_attributes)
+    @manufacturer =car_attributes[:manufacturer]
+    @model = car_attributes[:model]
+    @years = car_attributes[:years]
+    @suggested_price = car_attributes[:suggested_price]
+    @extra_information = car_attributes[:extra_information]
   end
   
   def name
@@ -14,7 +14,18 @@ class Car
   end
   
   def model_years
-    @years.size == 1 ? @years.first.to_s : "#{@years.first} - #{@years.last}"
+    case 
+    when @years.nil?
+      ""
+    when @years.size == 1
+      @years.first.to_s 
+    else
+      "#{@years.first} - #{@years.last}"
+    end
+  end
+  
+  def to_s
+    "#{name} #{model_years}"
   end
   
 end

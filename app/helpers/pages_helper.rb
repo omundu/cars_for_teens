@@ -4,8 +4,6 @@ module PagesHelper
 
     car, year, suggested_price = car_information.first, car_information[1], car_information.last
     manufacturer, *model = car.split
-
-    # content_tag :li, content_tag(:ul, car_details(car_information), class: "car")
   end
 
   def car_details(car_information)
@@ -25,18 +23,3 @@ module PagesHelper
   end
 
 end
-
-# arr = ['a','b','c']
-# content_tag :div do
-#   arr.collect { |letter| content_tag(:scan, letter)
-# end
- # <li> <%= car.join(" :: ") %> </li>
- # <% vehicle, year, price = car.first.split, car[1], car.last %>
- # <% manufacturer, *make = vehicle %>
- # <li> <%= manufacturer %>
- #   <ul>
- #     <li><%= make.join(" ") %></li>
- #     <li><%= year %></li>
- #     <li><%= price %></li>
- #   </ul>
- # </li>

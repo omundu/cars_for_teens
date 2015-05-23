@@ -22,7 +22,7 @@
     <meta name="msapplication-TileImage" content="/favicons.ico/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     
-    <title><%= content_for?(:title) ? yield(:title) : "Cars For Teens" %></title>
+    <title><%= @title.present? ? @title : "Cars For Teens" %></title>
     
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'vendor/modernizr' %>

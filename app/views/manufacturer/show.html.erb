@@ -1,8 +1,7 @@
-<%= content_tag(:span, "", :class => "manufacturer_logo", :id => params[:manufacturer].downcase) %>
-
 <div id="summary">
-  <%= get_manufacturer_summary %>
+  <%= render 'summary' %>
 </div>
+
 
 <div id="cars">
   <%= content_tag :h1, @title %>

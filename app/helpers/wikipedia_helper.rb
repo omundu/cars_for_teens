@@ -36,8 +36,9 @@ module WikipediaHelper
     
     # Extract the summary paragraph in english
     if article_data[DISAMBIGUTION_URL].nil?
-      summary_data = article_data[ABSTRACT_URL]
-      summary_data.select{|data| data["lang"] == "en"}.first["value"]
+      summary_data = article_data[ABSTRACT_URL].detect{|data| data["lang"] == "en"}
+      # This is caused by the Subaru Outback article not having an english version
+      summary_data.nil? ? "" : summary_data["value"]
     else
       fetch_article_summary(article_data)
     end

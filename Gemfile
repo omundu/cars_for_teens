@@ -18,6 +18,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development do
   gem 'spring'
   gem 'compass'
+  gem 'web-console'
 end
 
 group :test do

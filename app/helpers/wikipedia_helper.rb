@@ -96,8 +96,16 @@ module WikipediaHelper
     # we need to remove "sedan" and join with underscore
     [
       manufacturer,
-      model.split(" ").reject{|word| word == "sedan" || word == "Tribeca/B9"}.join("_").gsub("3-series", "3_Series")
+      wikipediarize_model(model)
     ].join("_")
+  end
+  
+  def wikipediarize_model(model)
+    clean_up_model(model).join("_").gsub("3-series", "3_Series")
+  end
+  
+  def clean_up_model(model)
+    model.split(" ").reject{|word| word == "sedan" || word == "Tribeca/B9"}
   end
   
   def build_data_url(item)

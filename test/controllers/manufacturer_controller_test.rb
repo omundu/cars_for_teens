@@ -10,7 +10,6 @@ class ManufacturerControllerTest < ActionController::TestCase
   end
 
   test "should get help" do
-    skip("need to stub cars method")
     get :show, :manufacturer => "Mitsubishi"
     
     assert_response :success

@@ -2,16 +2,12 @@ require 'test_helper'
 
 class CarExtractorTest < ActiveSupport::TestCase
   test "get car array" do
-    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one</td><td>1998</td></tr><tr><td>three</td><td>1999-00</td></tr><tr><td>five</td><td>2001 and later</td></tr></table></body></html>")
-    expected_result = [
-      Car.new(manufacturer: "one", years: [1998], suggested_price: 0, model: ""),
-      Car.new(manufacturer: "three", years: [1999, 2000], suggested_price: 0, model: ""),
-      Car.new(manufacturer: "five", years: [2001, 2002, 2014], suggested_price: 0, model: "")
-    ]
+    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one two</td><td>1998</td></tr><tr><td>three four</td><td>1999-00</td></tr><tr><td>five six</td><td>2001 and later</td></tr></table></body></html>")
+    expected_result = ["one two 1998", "three four 1999 - 2000", "five six 2001 - 2014"]
 
     assert_equal expected_result.map(&:to_s), CarExtractor.new.get_car_array(html_doc).map(&:to_s)
   end
-  
+
   test "remove empty arrays" do
     array1 = [[], [1, 2, 3], [4, 5, 6], [7, 8, 9]]
     array2 = [[1, 2, 3], [], [4, 5, 6], [7, 8, 9]]
@@ -57,39 +53,20 @@ class CarExtractorTest < ActiveSupport::TestCase
   end
 
   test "select data cells" do
-    html_doc = Nokogiri::HTML(
-      "<html>
-        <body>
-          <table>
-            <tr>
-              <td>one</td><td>two</td>
-            </tr>
-            <tr>
-              <td>three</td><td>four</td>
-            </tr>
-            <tr>
-              <td>five</td><td>six</td>
-            </tr>
-          </table>
-        </body>
-      </html>"
-    )
-    expected_result = [
-      Nokogiri::HTML("<tr><td>one</td><td>two</td></tr>").at_css('tr').children,
-      Nokogiri::HTML("<tr><td>three</td><td>four</td></tr>").at_css('tr').children,
-      Nokogiri::HTML("<tr><td>five</td><td>six</td></tr>").at_css('tr').children
-    ]
-    received_result = CarExtractor.new.select_data_cells(html_doc)
+    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr><tr><td>five</td><td>six</td></tr></table></body></html>")
+    selected = CarExtractor.new.select_data_cells(html_doc)
 
-    assert_equal expected_result.map(&:text), received_result.map(&:text)
+    assert_equal 3, selected.size
+    assert_equal  [2, 2, 2], selected.map(&:size)
   end
 
   test "extract car information" do
-    car =  Nokogiri::HTML("<tr><td>vw ion</td><td>2011</td></tr>").at_css('tr').css('td')
-    expected_car = Car.new({manufacturer: "vw", years: [2011], suggested_price: 0, model: "ion"})
-    built_car = CarExtractor.new.extract_car_information([car]).first
+    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one two</td><td>1998</td></tr><tr><td>three four</td><td>2000-01</td></tr><tr><td>five six</td><td>2004 and later</td></tr></table></body></html>")
+    raw_data = CarExtractor.new.select_data_cells(html_doc)
+    cars_extracted = CarExtractor.new.extract_car_information(raw_data)
+    expected_cars = ["one two 1998", "three four 2000 - 2001", "five six 2004 - 2014"]
 
-    assert_equal expected_car.to_s, built_car.to_s
+    assert_equal expected_cars, cars_extracted.map(&:to_s)
   end
 
   test "construct car information" do

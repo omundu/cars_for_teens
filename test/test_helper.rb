@@ -9,10 +9,9 @@ require "fakeweb"
 Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
-  
   FakeWeb.register_uri(:get, "http://www.iihs.org/iihs/ratings/vehicles-for-teens", :body => "You have arrived")
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  # fixtures :all
-
-  # Add more helper methods to be used by all tests here...
+  FakeWeb.register_uri(:get, "http://dbpedia.org/data/Mitsubishi_Motors.json",
+    :content_type => "application/json",
+    :body => File.open(File.expand_path(".", "test/files/mitsubishi_motors.json")).read
+  )
 end

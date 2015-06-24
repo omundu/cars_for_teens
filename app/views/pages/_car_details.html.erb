@@ -1,5 +1,1 @@
-<div class="car button secondary">
-  <%= car.name %><br />
-  <%= car.model_years %><br />
-  Base Price: $<%= number_with_delimiter(car.suggested_price, :delimiter => ',') %><br />
-</div>
+<%= button_to "#{car.name}\n#{car.model_years}", model_path(car.manufacturer, car.model), :class => "car button secondary", :method => :get, params: {models: car.years.join(",")} %>

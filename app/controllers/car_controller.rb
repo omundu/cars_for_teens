@@ -1,8 +1,10 @@
 class CarController < ApplicationController
+  include CarHelper
+  
   def model
     @title = "#{params[:manufacturer]} #{params[:model]}"
     
-    @years = cars.select{|car| car.model == params[:model]}.map(&:years).flatten
+    @years = model_years_to_display
   end
   
   def year

@@ -14,11 +14,11 @@
       These are all the cars models that made the list, each one brings a great balance between safety and value for money.
     </p>
     
-    <% @cars.each do |car| %>
-      <%= render partial: 'car_details', locals: {car: car} %>
+    <% @cars.uniq{|car| car.name}.each do |car| %>
+      <%= render partial: 'car_models', locals: {car: car} %>
     <% end %>
   </div>
-  
+
   <div class="content" id="good">
     <p>
       These are competively price and offer good value for money.

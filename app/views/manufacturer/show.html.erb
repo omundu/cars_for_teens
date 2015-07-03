@@ -1,19 +1,22 @@
-<div id="summary">
-  <%= render 'summary' %>
-</div>
+<div class="row">
+  <div class="large-9 push-3 columns">
+    <%= content_tag :h1, @title %>
 
+    <nav class="breadcrumbs">
+      <%= link_to "Manufacturers", manufacturers_path %>
+      <%= link_to params[:manufacturer], manufacturer_path(params[:manufacturer]), class: "current" %>
+    </nav>
 
-<div id="cars">
-  <%= content_tag :h1, @title %>
+    <% @cars.uniq(&:name).sort{|cara, carb| cara.model <=> carb.model}.each do |car| %>
+      <div class="car">
+        <%= link_to car.model, model_path(car.manufacturer, car.model) %>
+      </div>
+    <% end %>
+  </div>
 
-  <nav class="breadcrumbs">
-    <%= link_to "Manufacturers", manufacturers_path %>
-    <%= link_to params[:manufacturer], manufacturer_path(params[:manufacturer]), class: "current" %>
-  </nav>
-
-  <% @cars.uniq(&:name).sort{|cara, carb| cara.model <=> carb.model}.each do |car| %>
-    <div class="car">
-      <%= link_to car.model, model_path(car.manufacturer, car.model) %>
+  <div class="large-3 pull-9 columns">
+    <div id="summary">
+      <%= render 'summary' %>
     </div>
-  <% end %>
+  </div>
 </div>

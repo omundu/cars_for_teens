@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= @title.titleize %></title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons.ico/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/favicons.ico/apple-icon-60x60.png">
@@ -22,12 +21,18 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicons.ico/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    
+
+    <title><%= @title.present? ? @title : "Cars For Teens" %></title>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'layouts/top_navigation' %>
-    <div id="page-content">
+    <div class="row">
+      <%= render 'layouts/top_navigation' %>
       <%= yield %>
     </div>
   </body>

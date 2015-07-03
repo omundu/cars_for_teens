@@ -115,4 +115,11 @@ module WikipediaHelper
   def build_resource_url(item)
     "http://dbpedia.org/resource/#{item}"
   end
+
+  def wikipedia_histories
+    # uses wikipedia-client gem
+    WIKIPEDIA_NAMES.values.map do |x|
+      Wikipedia.find(x).sanitized_content.split('<p>==History==</p>').first
+    end
+  end
 end

@@ -1,4 +1,4 @@
 <%= content_tag(:span, "", :class => "manufacturer_logo", :id => params[:manufacturer].downcase) %>
 
-<%= link_to "Manufacturer Summary", manufacturer_summary_path, data: { reveal_id: "manufacturerModal", reveal_ajax: "true" } %>
+<%= link_to "Manufacturer Summary", manufacturer_summary_path, data: { reveal_id: "manufacturerModal", reveal_ajax: "true" }, class: "button secondary large" %>
 <div id="manufacturerModal" class="reveal-modal" data-reveal aria-labelledby="manufacturerModalTitle" aria-hidden="true" role="dialog"></div>

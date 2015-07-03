@@ -64,4 +64,22 @@ class CarExtractor
     Nokogiri::HTML(open("http://www.iihs.org/iihs/ratings/vehicles-for-teens"))
   end
   
+  def new_extraction_roadmap
+    page = Nokogiri::HTML(open("http://www.iihs.org/iihs/ratings/vehicles-for-teens"))
+    category = ""
+    page.css('tr').collect do |row|
+      if row.at_css('th')
+        category = row.at_css('th').text
+      else
+        row.css('td').map(&:text) << category
+      end
+    end
+
+
+    page.css('tr').collect do |row|
+      next if row.at_css('th') && category = row.at_css('th').text
+      row.css('td').map(&:text) << category
+    end
+  end
+  
 end

@@ -10,39 +10,39 @@
   <li class="tab-title"><a href="#better">Gooder</a></li>
 </ul>
 
+<div class="tabs-content">
+  <div class="content active" id="all">
+    <p>
+      These are all the cars models that made the list, each one brings a great balance between safety and value for money.
+    </p>
+    <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4" data-equalizer>
+      <% @cars.uniq{|car| car.name}.each do |car| %>
+        <%= render partial: 'car_models', locals: {car: car} %>
+      <% end %>
+    </ul>
+  </div>
 
+  <div class="content" id="good">
+    <p>
+      These are competively price and offer good value for money.
+    </p>
 
-<div class="content active" id="all">
-  <p>
-    These are all the cars models that made the list, each one brings a great balance between safety and value for money.
-  </p>
-  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-    <% @cars.uniq{|car| car.name}.each do |car| %>
-      <%= render partial: 'car_models', locals: {car: car} %>
-    <% end %>
-  </ul>
-</div>
+    <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4" data-equalizer>
+      <% @cars.reject{|car| car if car.suggested_price > 10000}.each do |car| %>
+        <%= render partial: 'car_details', locals: {car: car} %>
+      <% end %>
+    </ul>
+  </div>
 
-<div class="content" id="good">
-  <p>
-    These are competively price and offer good value for money.
-  </p>
+  <div class="content" id="better">
+    <p>
+      Though more expensive, these have more to offer in terms of features and residual value.
+    </p>
 
-  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-    <% @cars.reject{|car| car if car.suggested_price > 10000}.each do |car| %>
-      <%= render partial: 'car_details', locals: {car: car} %>
-    <% end %>
-  </ul>
-</div>
-
-<div class="content" id="better">
-  <p>
-    Though more expensive, these have more to offer in terms of features and residual value.
-  </p>
-
-  <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
-    <% @cars.reject{|car| car if car.suggested_price <= 10000}.each do |car| %>
-      <%= render partial: 'car_details', locals: {car: car} %>
-    <% end %>
-  </ul>
+    <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4" data-equalizer>
+      <% @cars.reject{|car| car if car.suggested_price <= 10000}.each do |car| %>
+        <%= render partial: 'car_details', locals: {car: car} %>
+      <% end %>
+    </ul>
+  </div>
 </div>

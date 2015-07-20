@@ -13,10 +13,9 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-
  */
 
-/*body {
+body {
   background-color: #000000;
   /* background: -webkit-linear-gradient(#000000, #707070); /* For Safari 5.1 to 6.0 */
   background: -webkit-linear-gradient(#000000, #ffffff);
@@ -26,7 +25,7 @@
   background: -moz-linear-gradient(#000000, #ffffff);
   /* background: linear-gradient(#000000, #707070); /* Standard syntax (must be last) */
   background: linear-gradient(#000000, #ffffff);
-}*/
+}
 
 .row {
   background-color: #FEFEFA;

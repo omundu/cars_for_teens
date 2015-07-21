@@ -8,7 +8,6 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sqlite3'
 
 gem 'nokogiri'
 gem 'foundation-rails'
@@ -40,4 +39,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

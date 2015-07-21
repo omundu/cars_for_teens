@@ -1,0 +1,7 @@
+<li data-equalizer-watch>
+  <%= link_to(model_path(car.manufacturer, car.model, params: {models: car.years.join(",")}), :class => "button secondary") do %>
+    <%= "#{car.name}" %>
+    <br />
+    <%= "#{car.model_years}" %>
+  <% end %>
+</li>

@@ -28,4 +28,8 @@ class Car
     "#{name} #{model_years}"
   end
   
+  def to_s
+    "#{name} #{model_years}"
+  end
+  
 end

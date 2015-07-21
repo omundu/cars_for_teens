@@ -1,5 +1,5 @@
-<% @manufacturers.sort.each do |manufacturer| %>
-  <div class="car">
-    <%= link_to manufacturer, manufacturer_url(manufacturer) %>
-  </div>
-<% end %>
+<div class="manufacturers">
+  <% @manufacturers.sort.each do |manufacturer| %>
+    <%= link_to manufacturer, manufacturer_url(manufacturer), :class => "logo", :id =>  "#{manufacturer.downcase}"%>
+  <% end %>
+</div>

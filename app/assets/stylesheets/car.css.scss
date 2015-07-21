@@ -1,3 +1,13 @@
 // Place all the styles related to the car controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.manufacturer_logo {
+  background-image: url(logo_spritesheet.png);
+  background-repeat: no-repeat;
+  display: block;
+  width: 200px;
+  height: 200px;
+  float: left;
+  margin-bottom: 30px;
+}

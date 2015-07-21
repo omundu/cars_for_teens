@@ -2,13 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  margin: 30px;
+.button {
+  width: 100%;
 }
 
-.car {
-  float: left;
-  padding: 10px 30px;
-  width: 170px;
-  height: 80px;
+.intro, .tabs, .content {
+  padding: 0 10px;
+}
+
+.tabs li, .content li {
+  padding: 0 1.5px 3px;
+  a {
+    margin: 0;
+  }
+}
+
+.content {
+  p {
+    margin: 10px;
+  }
+  ul {
+    margin: 0 0.375rem
+  }
 }

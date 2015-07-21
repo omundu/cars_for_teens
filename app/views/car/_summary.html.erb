@@ -1,0 +1,6 @@
+<div id="summary">
+  <%= render 'manufacturer/summary' %>
+  
+  <%= link_to "Model Summary", model_summary_path, data: { reveal_id: "modelModal", reveal_ajax: "true" }, class: "button secondary large radius" %>
+  <div id="modelModal" class="reveal-modal" data-reveal aria-labelledby="modelModalTitle" aria-hidden="true" role="dialog"></div>
+</div>

@@ -115,6 +115,7 @@ GEM
     notiffany (0.0.5)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -206,6 +207,7 @@ DEPENDENCIES
   minitest-osx
   minitest-reporters (= 1.0.5)
   nokogiri
+  pg
   rails (= 4.1.9)
   rails_12factor
   sass-rails (~> 5.0.0)

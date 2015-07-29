@@ -8,11 +8,11 @@ class WikipediaHelperTest < ActionView::TestCase
       resource_url: "http://dbpedia.org/resource/Mitsubishi_Motors"
     }
 
-    assert_equal "", get_wikipedia_summary(urls)
+    assert_equal "Error Fectching information....we are looking into it", get_wikipedia_summary(urls)
   end
 
   test "get manufacturer summary" do
-    assert_equal "", get_manufacturer_summary("Mitsubishi")
+    assert_equal "Error Fectching information....we are looking into it", get_manufacturer_summary("Mitsubishi")
   end
 
   test "get model summary" do

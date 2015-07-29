@@ -9,6 +9,13 @@
       <%= link_to params[:model], model_path(params[:manufacturer], params[:model]) %>
       <%= link_to params[:year], car_path(params[:manufacturer], params[:model], params[:year]), class: "current" %>
     </nav>
+
+    <% @trims.each do |trim| %>
+      <div>
+        <%= trim["id"] %>:<br />
+        <%= trim["name"] %>
+      </div>
+    <% end %>
   </div>
   <div class="large-3 pull-9 columns">
     <%= render 'summary' %>

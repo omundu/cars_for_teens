@@ -12,12 +12,19 @@ gem 'jbuilder', '~> 2.0'
 gem 'nokogiri'
 gem 'foundation-rails'
 
+gem 'puma'
+
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 group :development do
   gem 'spring'
   gem 'compass'
   gem 'web-console'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
 end
 
 group :test do
@@ -33,15 +40,3 @@ group :production do
   gem 'rails_12factor'
   gem 'pg'
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

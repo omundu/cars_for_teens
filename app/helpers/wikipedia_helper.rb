@@ -38,7 +38,7 @@ module WikipediaHelper
     if article_data[DISAMBIGUTION_URL].nil?
       summary_data = article_data[ABSTRACT_URL].detect{|data| data["lang"] == "en"}
       # This is caused by the Subaru Outback article not having an english version
-      summary_data.nil? ? "" : summary_data["value"]
+      summary_data.nil? ? "Error Fectching information....we are looking into it" : summary_data["value"]
     else
       fetch_article_summary(article_data)
     end

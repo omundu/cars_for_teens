@@ -34,10 +34,6 @@ set :linked_files, %w{config/secrets.yml config/database.yml}
 # set :keep_releases, 5
 # Default deploy_to directory is /var/www/my_app_name
 
-## Linked Files & Directories (Default None):
-set :linked_files, %w{config/secrets.yml}
-# set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do

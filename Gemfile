@@ -8,7 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sqlite3'
+gem 'pg'
 
 gem 'nokogiri'
 gem 'foundation-rails'
@@ -38,5 +38,4 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
 end

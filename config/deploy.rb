@@ -72,14 +72,6 @@ namespace :deploy do
       invoke 'puma:restart'
     end
   end
-  
-  desc 'Reset database'
-  task :db_reset do
-    on roles(:app) do
-      `bundle exec rake db:create`
-      `bundle exec rake db:migrate`
-    end
-  end
 
   before :starting,     :check_revision
   after  :finishing,    :compile_assets

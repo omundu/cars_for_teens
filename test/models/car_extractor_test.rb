@@ -8,27 +8,27 @@ class CarExtractorTest < ActiveSupport::TestCase
     assert_equal expected_result.map(&:to_s), CarExtractor.new.get_car_array(html_doc).map(&:to_s)
   end
 
-  test "remove empty arrays" do
-    array1 = [[], [1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    array2 = [[1, 2, 3], [], [4, 5, 6], [7, 8, 9]]
-    array3 = [[1, 2, 3], [4, 5, 6], [], [7, 8, 9]]
-    array4 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], []]
-    array5 = [[], [1, 2, 3], [], [4, 5, 6], [], [7, 8, 9], []]
-    array6 = [[], [], [], [1, 2, 3], [], [], [], [4, 5, 6], [], [], [], [7, 8, 9], [], [], []]
+  test "remove header rows" do
+    array1 = [0, [1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    array2 = [[1, 2, 3], 0, [4, 5, 6], [7, 8, 9]]
+    array3 = [[1, 2, 3], [4, 5, 6], 0, [7, 8, 9]]
+    array4 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], 0]
+    array5 = [0, [1, 2, 3], 0, [4, 5, 6], 0, [7, 8, 9], 0]
+    array6 = [0, 0, 0, [1, 2, 3], 0, 0, 0, [4, 5, 6], 0, 0, 0, [7, 8, 9], 0, 0, 0]
     array7 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
     [array1, array2, array3, array4, array5, array6, array7].each do |test_array|
-      assert_equal [[1, 2, 3], [4, 5, 6], [7, 8, 9]], CarExtractor.new.remove_empty_arrays(test_array)
+      assert_equal [[1, 2, 3], [4, 5, 6], [7, 8, 9]], CarExtractor.new.remove_header_rows(test_array)
     end
   end
 
   test "handle empty arrays" do
-    array1 = [[]]
-    array2 = [[], [], []]
+    array1 = [0]
+    array2 = [0, 0, 0]
     array3 = []
 
     [array1, array2, array3].each do |test_array|
-      assert_equal [], CarExtractor.new.remove_empty_arrays(test_array)
+      assert_equal [], CarExtractor.new.remove_header_rows(test_array)
     end
   end
 
@@ -53,11 +53,11 @@ class CarExtractorTest < ActiveSupport::TestCase
   end
 
   test "select data cells" do
-    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr><tr><td>five</td><td>six</td></tr></table></body></html>")
+    html_doc = Nokogiri::HTML("<html><body><table><tr><td>one</td><td>two</td></tr><tr><th>numbers</th><th></th></tr><tr><td>three</td><td>four</td></tr><tr><th>more numbers</th></tr><tr><td>five</td><td>six</td></tr></table></body></html>")
     selected = CarExtractor.new.select_data_cells(html_doc)
 
-    assert_equal 3, selected.size
-    assert_equal  [2, 2, 2], selected.map(&:size)
+    assert_equal 5, selected.size
+    assert_equal [["one", "two", "vroom"], "numbers", ["three", "four", "numbers"], "more numbers", ["five", "six", "more numbers"]], selected
   end
 
   test "extract car information" do
@@ -70,38 +70,42 @@ class CarExtractorTest < ActiveSupport::TestCase
   end
 
   test "construct car information" do
-    row0 = Nokogiri::HTML("<tr><td>ford puma</td><td>2006-08</td></tr>").at_css('tr').css('td')
-    row1 = Nokogiri::HTML("<tr><td>fiat pogo</td><td>2009</td></tr>").at_css('tr').css('td')
-    row2 = Nokogiri::HTML("<tr><td>kia rogue</td><td>2010 and later</td></tr>").at_css('tr').css('td')
-    row3 = Nokogiri::HTML("<tr><td>bmw X-5 M</td><td>2005-08; built after October 2004</td></tr>").at_css('tr').css('td')
+    row0 = ["ford puma", "2006-08", "$1593", "Sports Car"]
+    row1 = ["fiat pogo", "2009", "$2604", "Kei Car"]
+    row2 = ["kia rogue", "2010 and later", "$3715", "CUV"]
+    row3 = ["bmw X-5 M", "2005-08; built after October 2004", "$4826", "SUV"]
 
     car0 = {
       :manufacturer => "ford",
       :model => "puma",
       :years => [2006, 2007, 2008],
-      :suggested_price => 2006,
-      :extra_information => nil
+      :suggested_price => 1593,
+      :extra_information => nil,
+      :category => "Sports Car"
     }
     car1 = {
       :manufacturer => "fiat",
       :model => "pogo",
       :years => [2009],
-      :suggested_price => 2009,
-      :extra_information => nil
+      :suggested_price => 2604,
+      :extra_information => nil,
+      :category => "Kei Car"
     }
     car2 = {
       :manufacturer => "kia",
       :model => "rogue",
       :years => [2010, 2011, 2012, 2013, 2014],
-      :suggested_price => 2010,
-      :extra_information => nil
+      :suggested_price => 3715,
+      :extra_information => nil,
+      :category => "CUV"
     }
     car3 = {
       :manufacturer => "bmw",
       :model => "X-5 M",
       :years => [2005, 2006, 2007, 2008],
-      :suggested_price => 2005,
-      :extra_information => " built after October 2004"
+      :suggested_price => 4826,
+      :extra_information => " built after October 2004",
+      :category => "SUV"
     }
 
     assert_equal car0, CarExtractor.new.construct_car_information(row0)

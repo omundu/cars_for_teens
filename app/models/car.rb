@@ -1,5 +1,5 @@
 class Car
-  attr_reader :manufacturer, :model, :years, :suggested_price, :extra_information
+  attr_reader :manufacturer, :model, :years, :suggested_price, :extra_information, :category
   
   def initialize(car_attributes)
     @manufacturer =car_attributes[:manufacturer]
@@ -7,6 +7,7 @@ class Car
     @years = car_attributes[:years]
     @suggested_price = car_attributes[:suggested_price]
     @extra_information = car_attributes[:extra_information]
+    @category = car_attributes[:category]
   end
   
   def name

@@ -29,8 +29,15 @@ class Car
     "#{name} #{model_years}"
   end
   
-  def to_s
-    "#{name} #{model_years}"
+  def to_a
+    [
+      @manufacturer,
+      @model,
+      @years.join(" "),
+      @suggested_price,
+      @extra_information,
+      @category
+    ]
   end
   
 end

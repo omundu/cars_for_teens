@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class CarTest < ActiveSupport::TestCase
-  CAR_ATTRIBUTES = {manufacturer: "Mitsubishi", model: "Lancer Evolution VI TME", years: [1999], suggested_price: "$50,000", extra_information: "Only 300 made", category: "
-    RALLY CAR"}
+  CAR_ATTRIBUTES = {manufacturer: "Mitsubishi", model: "Lancer Evolution VI TME", years: [1999], suggested_price: "$50,000", extra_information: "Only 300 made", category: "RALLY CAR"}
   
   test "attribute reader methods" do
     car = Car.new({})
@@ -60,6 +59,12 @@ class CarTest < ActiveSupport::TestCase
     car = Car.new(CAR_ATTRIBUTES)
     
     assert_equal "Mitsubishi Lancer Evolution VI TME 1999", car.to_s
+  end
+  
+  test "to_a" do
+    car = Car.new(CAR_ATTRIBUTES)
+    
+    assert_equal ["Mitsubishi", "Lancer Evolution VI TME", "1999", "$50,000", "Only 300 made", "RALLY CAR"], car.to_a
   end
   
 end

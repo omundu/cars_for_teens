@@ -7,7 +7,7 @@ class ManufacturerRoutesTest < ActionController::TestCase
  
   test "should resolve all other actions to the landing page" do
     ['hi', 'test', 'foo', 'a', 'mer-ben', 'FCA', 'bananarama', 'a_b-b_a'].each do |name|
-      assert_routing "manufacturer/#{name}", {controller: "manufacturer", action: "show", manufacturer: name}
+      assert_routing "manufacturers/#{name}", {controller: "manufacturer", action: "show", manufacturer: name}
     end
   end
 end

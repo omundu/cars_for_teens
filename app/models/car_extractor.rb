@@ -9,13 +9,13 @@ class CarExtractor
   
   def get_car_array(page)
     data_cells = select_data_cells(page)
-    sanitized_cells = remove_empty_arrays(data_cells)
+    sanitized_cells = remove_header_rows(data_cells)
     
     extract_car_information(sanitized_cells)
   end
   
-  def remove_empty_arrays(collection)
-    collection.reject{|array| array.empty?}
+  def remove_header_rows(collection)
+    collection.select{|array| array.class == Array}
   end
   
   def select_by_element(html_page, element)
@@ -23,24 +23,32 @@ class CarExtractor
   end
   
   def select_data_cells(html_page)
-    select_by_element(html_page, 'tr').collect{|table_row| select_by_element(table_row, 'td')}
+    category = "vroom"
+    select_by_element(html_page, 'tr').collect do |table_row|
+      if table_row.at_css('th')
+        category = table_row.at_css('th').text
+      else
+        select_by_element(table_row, 'td').map(&:text) << category
+      end
+    end
   end
   
   def extract_car_information(sanitized_data)
-    sanitized_data.collect{|row| Car.new(construct_car_information(row))}
+    sanitized_data.collect{|car_data| Car.new(construct_car_information(car_data))}
   end
   
-  def construct_car_information(row)
-    vehicle = row.first.content.split
+  def construct_car_information(car_data)
+    vehicle = car_data.first.split
     manufacturer, *model = vehicle
-    years, extra_information = row[1].content.split(";")
+    years, extra_information = car_data.second.split(";")
     
     {
       manufacturer: manufacturer,
       model: model.join(" "),
       years: extract_years(years),
-      suggested_price: row.last.content.delete("$,").to_i,
-      extra_information: extra_information
+      suggested_price: car_data.third.delete("$,").to_i,
+      extra_information: extra_information,
+      category: car_data.fourth
     }
   end
   
@@ -62,24 +70,6 @@ class CarExtractor
   
   def fetch_page
     Nokogiri::HTML(open("http://www.iihs.org/iihs/ratings/vehicles-for-teens"))
-  end
-  
-  def new_extraction_roadmap
-    page = Nokogiri::HTML(open("http://www.iihs.org/iihs/ratings/vehicles-for-teens"))
-    category = ""
-    page.css('tr').collect do |row|
-      if row.at_css('th')
-        category = row.at_css('th').text
-      else
-        row.css('td').map(&:text) << category
-      end
-    end
-
-
-    page.css('tr').collect do |row|
-      next if row.at_css('th') && category = row.at_css('th').text
-      row.css('td').map(&:text) << category
-    end
   end
   
 end

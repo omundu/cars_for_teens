@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="large-10 push-1 columns">
+    <div class="categories">
+      <% @categories.sort.each do |category| %>
+        <div class="car">
+          <%= link_to category.downcase, category_path(category), :class => "car_icon", :id =>  "#{category.parameterize('_')}"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

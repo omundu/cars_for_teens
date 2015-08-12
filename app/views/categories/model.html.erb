@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="large-9 push-3 columns">
+    <%= content_tag :h1, @title %>
+
+    <nav class="breadcrumbs">
+      <%= link_to "Categories", categories_path %>
+      <%= link_to params[:category], category_path(params[:category]) %>
+      <%= link_to params[:model], category_model_path(params[:category], params[:model]), class: "current" %>
+    </nav>
+    
+    <div class="content">
+      <% @years.sort.each do |year| %>
+        <div class="car">
+          <%= link_to year, category_year_path(params[:category], params[:model], year) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="large-3 pull-9 columns">
+    <%= content_tag(:span, "", :class => "car_icon", :id => "#{params[:category].parameterize('_')}") %>
+  </div>
+</div>

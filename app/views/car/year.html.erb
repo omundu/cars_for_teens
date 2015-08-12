@@ -9,7 +9,14 @@
       <%= link_to params[:model], model_path(params[:manufacturer], params[:model]) %>
       <%= link_to params[:year], car_path(params[:manufacturer], params[:model], params[:year]), class: "current" %>
     </nav>
+    
+    <div class="content">
+      <p>
+        Available trims and images coming soon
+      </p>
+    </div>
   </div>
+  
   <div class="large-3 pull-9 columns">
     <%= render 'summary' %>
   </div>

@@ -10,8 +10,14 @@ Minitest::Reporters.use!
 
 class ActiveSupport::TestCase
   FakeWeb.register_uri(:get, "http://www.iihs.org/iihs/ratings/vehicles-for-teens", :body => "You have arrived")
+  
   FakeWeb.register_uri(:get, "http://dbpedia.org/data/Mitsubishi_Motors.json",
     :content_type => "application/json",
     :body => File.open(File.expand_path(".", "test/files/mitsubishi_motors.json")).read
+  )
+  
+  FakeWeb.register_uri(:get, "http://dbpedia.org/data/Mitsubishi_Pajero.json",
+    :content_type => "application/json",
+    :body => File.open(File.expand_path(".", "test/files/mitsubishi_pajero.json")).read
   )
 end

@@ -20,4 +20,8 @@ class ActiveSupport::TestCase
     :content_type => "application/json",
     :body => File.open(File.expand_path(".", "test/files/mitsubishi_pajero.json")).read
   )
+  
+  FakeWeb.register_uri(:get, "http://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/pajero/2011",
+    :body => File.open(File.expand_path(".", "test/files/safety_rating_sample.html")).read
+  )
 end

@@ -54,19 +54,4 @@ class SafetyRatingsTest < ActiveSupport::TestCase
     
   end
   
-  test "generate_cache_key" do
-    assert_equal "MitsubishiPajero2011", SafetyRatings.generate_cache_key(@model_hash)
-  end
-  
-  test "fetch_uncached_ratings" do
-    ratings = [
-      {:rating_type=>"Moderate overlap front", :rating_value=>"G"},
-      {:rating_type=>"Side", :rating_value=>"G"},
-      {:rating_type=>"Roof strength", :rating_value=>"G"},
-      {:rating_type=>"Head restraints & seats", :rating_value=>"A"}
-    ]
-    
-    assert_equal ratings, SafetyRatings.fetch_uncached_ratings(@model_hash)
-  end
-  
 end

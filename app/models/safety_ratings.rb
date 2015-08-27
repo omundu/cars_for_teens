@@ -6,6 +6,10 @@ class SafetyRatings
     @model = sanitize_model(options[:model])
     @year = options[:year]
   end
+  
+  def cached_ratings
+    Rails.cache.fetch([@manufacturer, @model, @year]) { ratings }
+  end
 
   def ratings
     ratings_section.collect do |rating|
@@ -30,24 +34,6 @@ class SafetyRatings
   
   def sanitize_model(model)
     model.parameterize
-  end
-
-  class << self
-
-    def generate_cache_key(options)
-      "#{options[:manufacturer]}#{options[:model]}#{options[:year]}"
-    end
-
-    def fetch_cached_ratings(options)
-      cache_key = generate_cache_key(options)
-      Rails.cache.fetch(cache_key, expires_in: 7.days) do
-        fetch_uncached_ratings(options)
-      end
-    end
-
-    def fetch_uncached_ratings(options)
-      SafetyRatings.new(options).ratings
-    end
   end
   
   private

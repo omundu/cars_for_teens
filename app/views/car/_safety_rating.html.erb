@@ -2,7 +2,7 @@
   
   <h4>IIHS Safety Rating</h4>
   <div id="ratings">
-    <% @safety_rating.ratings.each do |rating| %>
+    <% @safety_rating.cached_ratings.each do |rating| %>
       <div class="row">
         <div class="large-10 columns"><%= rating[:rating_type] %></div>
         <div class="large-2 columns"><%= rating[:rating_value] %></div>

@@ -18,6 +18,20 @@ class SafetyRatingsTest < ActiveSupport::TestCase
     assert_equal ratings, @safety_ratings.ratings
   end
   
+  test "cached_ratings" do
+    ratings = [
+      {:rating_type=>"Moderate overlap front", :rating_value=>"G"},
+      {:rating_type=>"Side", :rating_value=>"G"},
+      {:rating_type=>"Roof strength", :rating_value=>"G"},
+      {:rating_type=>"Head restraints & seats", :rating_value=>"A"}
+    ]
+    Rails.cache.clear
+    
+    assert_nil Rails.cache.read('mitsubishi/pajero/2011')
+    assert_equal ratings, @safety_ratings.cached_ratings
+    assert_equal ratings, Rails.cache.read('mitsubishi/pajero/2011')
+  end
+  
   test "ratings_uri" do
     expected_ratings_uri = "http://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/pajero/2011"
     

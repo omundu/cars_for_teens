@@ -19,7 +19,10 @@ class CategoriesController < ApplicationController
   end
   
   def year
+    manufacturer, model = params[:model].split
+    
     @title = "#{params[:model]} #{params[:year]}"
+    @safety_rating = SafetyRatings.new({manufacturer: manufacturer, model: model, year: params[:year]})
   end
   
 end

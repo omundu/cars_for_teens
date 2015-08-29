@@ -68,4 +68,59 @@ class SafetyRatingsTest < ActiveSupport::TestCase
     
   end
   
+  problem_links = [
+    #This model was not produced for this year...final model year 2012
+    "http://www.iihs.org/iihs/ratings/vehicle/v/saab/9-5/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/saab/9-5/2014",
+    #No tests by IIHS for some reason but they still included the car
+    "http://www.iihs.org/iihs/ratings/vehicle/v/subaru/outback/2010",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/subaru/outback/2011",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/subaru/outback/2012",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/subaru/outback/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/subaru/outback/2014",
+    #This model was not produced for this year...last model year 2013
+    "http://www.iihs.org/iihs/ratings/vehicle/v/audi/a3-4-door-wagon/2014",
+    #This model was not produced for this year...final model year 2011
+    "http://www.iihs.org/iihs/ratings/vehicle/v/mercury/milan/2011",
+    #No models this year
+    "http://www.iihs.org/iihs/ratings/vehicle/v/volkswagen/passat/2011",
+    #No tests were done for this model on this year
+    "http://www.iihs.org/iihs/ratings/vehicle/v/volvo/c30/2014",
+    #This model was not produced for this years...final model year 2011
+    "http://www.iihs.org/iihs/ratings/vehicle/v/honda/element/2012",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/honda/element/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/honda/element/2014",
+    #This model was not produced for this year...final model year 2013
+    "http://www.iihs.org/iihs/ratings/vehicle/v/infiniti/ex/2014",
+    #This model was not produced for this years...final model year 2012
+    "http://www.iihs.org/iihs/ratings/vehicle/v/acura/rl/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/acura/rl/2014",
+    #This model was not produced for this years...final model year 2011
+    "http://www.iihs.org/iihs/ratings/vehicle/v/volvo/s40/2012",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/volvo/s40/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/volvo/s40/2014",
+    #This model was not produced for this year...final model year 2013
+    "http://www.iihs.org/iihs/ratings/vehicle/v/suzuki/kizashi/2014",
+    #This model was not produced for this years...final model year 2011
+    "http://www.iihs.org/iihs/ratings/vehicle/v/saab/9-3-4-door-sedan/2012",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/saab/9-3-4-door-sedan/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/saab/9-3-4-door-sedan/2014",
+    #This model was not produced for this years...final model year 2011
+    "http://www.iihs.org/iihs/ratings/vehicle/v/mazda/tribute/2012",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/mazda/tribute/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/mazda/tribute/2014",
+    #This model was not produced for this year...final model year 2013
+    "http://www.iihs.org/iihs/ratings/vehicle/v/suzuki/grand-vitara/2014",
+    #No tests by IIHS for some reason but they still included the car
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2007",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2008",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2009",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2010",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2011",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2012",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2013",
+    "http://www.iihs.org/iihs/ratings/vehicle/v/hyundai/veracruz/2014",
+    #No tests by IIHS for some reason but they still included the car
+    "http://www.iihs.org/iihs/ratings/vehicle/v/kia/sedona/2013"
+  ]
 end

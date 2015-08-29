@@ -1,23 +1,14 @@
 <div id="safety-rating">
   
   <h4>IIHS Safety Rating</h4>
+  
   <div id="ratings">
     <% @safety_rating.cached_ratings.each do |rating| %>
       <div class="row">
         <div class="large-10 columns"><%= rating[:rating_type] %></div>
-        <div class="large-2 columns"><%= rating[:rating_value] %></div>
+        <div class="large-2 columns"><%= render rating[:rating_value].downcase %></div>
       </div>
     <% end %>
-  </div>
-  
-  <div id="key">
-    <p>
-    Safety Rating Legend:
-    <span data-tooltip aria-haspopup="true" class="has-tip [radius round]" title="Good: Highest rating given to a car for any test, passengers stand the best chance of escaping with minor, if any injuries.">G</span>
-    <span data-tooltip aria-haspopup="true" class="has-tip" title="Acceptable: Chance of injury in the event of a crash is low but present">A</span>
-    <span data-tooltip aria-haspopup="true" class="has-tip" title="Marginal: Just enough to avoid serious injury but not enough to avoid injury.">M</span>
-    <span data-tooltip aria-haspopup="true" class="has-tip" title="Poor: High likelyhood of serious injury in the event of a crash.">P</span>
-  </p>
   </div>
   
   <div id="full-report">

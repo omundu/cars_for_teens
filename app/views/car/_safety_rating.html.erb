@@ -1,0 +1,23 @@
+<div id="safety-rating">
+  
+  <h4>IIHS Safety Rating</h4>
+  
+  <% if @safety_rating.cached_ratings.empty? %>
+    <p class="text-justify">
+      Currently no safety rating is available for this model from IIHS. However, since it was on the list of safe cars for teens, it recieved better that poor rating in all the IIHS tests and 4-5 star overall rating from the NHTSA.
+    </p>
+  <% else %>
+    <div id="ratings">
+      <% @safety_rating.cached_ratings.each do |rating| %>
+        <div class="row">
+          <div class="large-10 columns"><%= rating[:rating_type] %></div>
+          <div class="large-2 columns"><%= render rating[:rating_value].downcase %></div>
+        </div>
+      <% end %>
+    </div>
+  
+    <div id="full-report">
+      <%= link_to "Full Safety Report", @safety_rating.report_uri, {target: "_blank", class: "button secondary radius"} %>
+    </div>
+  <% end %>
+</div>

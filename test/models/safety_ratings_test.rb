@@ -46,7 +46,7 @@ class SafetyRatingsTest < ActiveSupport::TestCase
   
   class SanitizeManufacturer < SafetyRatingsTest
     
-    test "sanitize_manufacturer" do
+    test "sanitize_manufacturer makes a string parameter friendly" do
       manufacturers = %w{Mitsubishi MITSUBISHI MITSUbishi mitsuBISHI mItSuBiShI MiTsUbIsHi mitsubishi}
       
       manufacturers.each do |manufacturer|
@@ -54,16 +54,64 @@ class SafetyRatingsTest < ActiveSupport::TestCase
       end
     end
     
+    test "sanitize_manufacturer updates 'mercedes-benz' with 'mercedes'" do
+      assert_equal "mercedes", @safety_ratings.sanitize_manufacturer("Mercedes-Benz")
+    end
+    
   end
   
   class SanitizeModel < SafetyRatingsTest
     
-    test "sanitize_model" do
+    test "sanitize_model makes a string parameter friendly" do
       models = %w{Pajero PAJERO PAJero pajERO pAjErO PaJeRo pajero}
       
       models.each do |model|
         assert_equal "pajero", @safety_ratings.sanitize_model(model)
       end
+    end
+    
+    test "sanitize_model updates '9-5 sedan' to '9-5'" do
+      assert_equal "9-5", @safety_ratings.sanitize_model("9-5 sedan")
+    end
+    
+    test "sanitize_model updates 'C-Class sedan' to 'c-class'" do
+      assert_equal "c-class", @safety_ratings.sanitize_model("C-Class sedan")
+    end
+    
+    test "sanitize_model updates 'Accord sedan' to 'accord-4-door-sedan'" do
+      assert_equal "accord-4-door-sedan", @safety_ratings.sanitize_model("Accord sedan")
+    end
+    
+    test "sanitize_model updates 'Accord coupe' to 'accord-2-door-coupe'" do
+      assert_equal "accord-2-door-coupe", @safety_ratings.sanitize_model("Accord coupe")
+    end
+    
+    test "sanitize_model updates 'A3' to 'a3-4-door-wagon'" do
+      assert_equal "a3-4-door-wagon", @safety_ratings.sanitize_model("A3")
+    end
+    
+    test "sanitize_model updates '200 sedan' to '200-4-door-sedan'" do
+      assert_equal "200-4-door-sedan", @safety_ratings.sanitize_model("200 sedan")
+    end
+    
+    test "sanitize_model updates 'Tribeca/B9 Tribeca' to 'tribeca'" do
+      assert_equal "tribeca", @safety_ratings.sanitize_model("Tribeca/B9 Tribeca")
+    end
+    
+    test "sanitize_model updates 'A6 sedan' to 'a6'" do
+      assert_equal "a6", @safety_ratings.sanitize_model("A6 sedan")
+    end
+    
+    test "sanitize_model updates '3-series sedan' to '3-series-4-door-sedan'" do
+      assert_equal "3-series-4-door-sedan", @safety_ratings.sanitize_model("3-series sedan")
+    end
+    
+    test "sanitize_model updates '9-3' to '9-3-4-door-sedan'" do
+      assert_equal "9-3-4-door-sedan", @safety_ratings.sanitize_model("9-3")
+    end
+    
+    test "'sanitize_model' updates 'Town & Country' to 'town--n--country'" do
+      assert_equal "town--n--country-minivan", @safety_ratings.sanitize_model("Town & Country")
     end
     
   end

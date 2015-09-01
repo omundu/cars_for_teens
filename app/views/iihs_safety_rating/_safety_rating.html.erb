@@ -11,7 +11,7 @@
       <% @safety_rating.cached_ratings.each do |rating| %>
         <div class="row">
           <div class="large-10 columns"><%= rating[:rating_type] %></div>
-          <div class="large-2 columns"><%= render rating[:rating_value].downcase %></div>
+          <div class="large-2 columns"><%= render "iihs_safety_rating/#{rating[:rating_value].downcase}" %></div>
         </div>
       <% end %>
     </div>

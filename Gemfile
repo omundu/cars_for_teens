@@ -14,6 +14,7 @@ gem 'nokogiri'
 gem 'foundation-rails'
 
 gem 'puma'
+gem 'newrelic_rpm'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

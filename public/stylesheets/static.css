@@ -1,0 +1,16 @@
+body {
+  height: 100%;
+  background-color: #000000;
+  background: -webkit-linear-gradient(#000000, #ffffff);
+  background: -o-linear-gradient(#000000, #ffffff);
+  background: -moz-linear-gradient(#000000, #ffffff);
+  background: linear-gradient(#000000, #ffffff);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.error_page {
+  text-align: center;
+  background-color: #FEFEFA;
+  margin: 0 10%;
+}

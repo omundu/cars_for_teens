@@ -24,4 +24,20 @@ class ActiveSupport::TestCase
   FakeWeb.register_uri(:get, "http://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/pajero/2011",
     :body => File.open(File.expand_path(".", "test/files/safety_rating_sample.html")).read
   )
+  
+  FakeWeb.register_uri(:get, "http://www.nhtsa.gov/webapi/api/SafetyRatings/modelyear/2012/make/Hyundai/model/veracruz?format=json",
+    :content_type => "application/json",
+    :body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trims.json")).read
+  )
+  
+  FakeWeb.register_uri(:get, "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/6751?format=json",
+    :content_type => "application/json",
+    :body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trima.json")).read
+  )
+  
+  FakeWeb.register_uri(:get, "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/6114?format=json",
+    :content_type => "application/json",
+    :body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trimb.json")).read
+  )
+  
 end

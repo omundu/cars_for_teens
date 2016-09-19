@@ -13,11 +13,14 @@
       <p>
         Available trims and images coming soon
       </p>
+      <p><%= @nhtsa_safety_rating.trim_uri %></p>
     </div>
   </div>
   
   <div class="large-3 pull-9 columns">
     <%= content_tag(:span, "", :class => "car_icon", :id => "#{params[:category].parameterize('_')}") %>
     <%= render 'iihs_safety_rating/safety_rating' %>
+    <%= render 'nhtsa_safety_rating/safety_ratings' %>
   </div>
 </div>
+ 

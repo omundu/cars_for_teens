@@ -1,7 +1,7 @@
 <div class="row">
   <div class="large-9 push-3 columns">
       <%= content_tag :h1, @title %>
-  
+
       <nav class="breadcrumbs">
         <%= link_to "Manufacturers", manufacturers_path %>
         <%= link_to params[:manufacturer], manufacturer_path(params[:manufacturer]) %>
@@ -10,13 +10,11 @@
 
       <div class="content">
         <% @years.sort.each do |year| %>
-          <div class="car">
-            <%= link_to year, car_path(params[:manufacturer], params[:model], year) %>
-          </div>
+          <%= link_to year, car_path(params[:manufacturer], params[:model], year), class: "button radius secondary" %>
         <% end %>
       </div>
   </div>
-  
+
   <div class="large-3 pull-9 columns">
     <%= render 'summaries/model_summary' %>
   </div>

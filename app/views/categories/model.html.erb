@@ -7,16 +7,14 @@
       <%= link_to params[:category], category_path(params[:category]) %>
       <%= link_to params[:model], category_model_path(params[:category], params[:model]), class: "current" %>
     </nav>
-    
+
     <div class="content">
       <% @years.sort.each do |year| %>
-        <div class="car">
-          <%= link_to year, category_year_path(params[:category], params[:model], year) %>
-        </div>
+          <%= link_to year, category_year_path(params[:category], params[:model], year), class: "button radius secondary" %>
       <% end %>
     </div>
   </div>
-  
+
   <div class="large-3 pull-9 columns">
     <%= content_tag(:span, "", :class => "car_icon", :id => "#{params[:category].parameterize('_')}") %>
   </div>

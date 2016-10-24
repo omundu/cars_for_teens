@@ -1,0 +1,15 @@
+{
+  "Count":2,
+  "Message":"Results returned successfully",
+  "Results":
+  [
+    {
+      "VehicleDescription":"2012 Hyundai Veracruz SUV AWD",
+      "VehicleId":6751
+    },
+    {
+      "VehicleDescription":"2012 Hyundai Veracruz SUV FWD",
+      "VehicleId":6114
+    }
+  ]
+}

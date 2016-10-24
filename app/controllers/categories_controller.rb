@@ -24,6 +24,7 @@ class CategoriesController < ApplicationController
     
     @title = "#{params[:model]} #{params[:year]}"
     @safety_rating = SafetyRatings.new({manufacturer: manufacturer, model: model, year: params[:year]})
+    @nhtsa_safety_rating = NhtsaSafetyRating.new({manufacturer: manufacturer, model: model, year: params[:year]})
   end
   
 end

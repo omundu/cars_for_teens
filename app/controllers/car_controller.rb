@@ -10,5 +10,6 @@ class CarController < ApplicationController
   def year
     @title = "#{params[:manufacturer]} #{params[:model]} #{params[:year]}"
     @safety_rating = SafetyRatings.new(params)
+    @nhtsa_safety_rating = NhtsaSafetyRating.new(params)
   end
 end

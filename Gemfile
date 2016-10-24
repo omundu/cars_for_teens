@@ -12,6 +12,7 @@ gem 'pg'
 
 gem 'nokogiri'
 gem 'foundation-rails'
+gem 'nhtsa'
 
 gem 'puma'
 gem 'newrelic_rpm'

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '~> 4.2'
 gem 'sass-rails'
 gem 'uglifier'
@@ -34,7 +33,7 @@ group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
   gem 'guard-minitest'
-  gem 'minitest-osx'
+  # gem 'minitest-notification'
   gem 'fakeweb'
 end
 

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @title = "Home."
+    @title = "Home"
 
     @cars = cars.sort_by{|car| [car.name, car.suggested_price]}
   end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.8'
+ruby '2.4.5'
 
 gem 'rails', '~> 4.2'
 gem 'sass-rails'
@@ -36,7 +36,7 @@ group :test do
   gem 'mini_backtrace'
   gem 'guard-minitest'
   # gem 'minitest-notification'
-  gem 'fakeweb'
+  gem 'fakeweb', github: 'chrisk/fakeweb', branch: 'master'
 end
 
 group :production do

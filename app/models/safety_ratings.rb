@@ -25,11 +25,28 @@ class SafetyRatings
   end
 
   def ratings
-    ratings_section.collect do |rating|
-      {
-        rating_type: rating.at_css('.rating-caption').content.strip,
-        rating_value: rating.at_css('.rating-icon').content.strip
-      }
+    ratings_section.inject([]) do |ratings_array, rating|
+      case rating.at_css('.rating-caption').content.strip
+      when 'Small overlap front'
+        ratings_array += []
+      when 'Passenger-side'
+        ratings_array += [{
+          rating_type: 'Small overlap front: Passenger-side',
+          rating_value: rating.at_css('.rating-icon').content.strip.presence || 'NR'
+        }]
+      when 'Driver-side'
+        ratings_array += [{
+          rating_type: 'Small overlap front: Driver-side',
+          rating_value: rating.at_css('.rating-icon').content.strip.presence || 'NR'
+        }]
+      else
+        ratings_array += [
+          {
+            rating_type: rating.at_css('.rating-caption').content.strip,
+            rating_value: rating.at_css('.rating-icon').content.strip
+          }
+        ]
+      end
     end
   end
 

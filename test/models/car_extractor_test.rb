@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class CarExtractorTest < ActiveSupport::TestCase
+
+  setup do
+    stub_requests
+  end
+
   test "get car array" do
     html_doc = Nokogiri::HTML("<html><body><table><tr><td>one two</td><td>1998</td></tr><tr><td>three four</td><td>1999-00</td></tr><tr><td>five six</td><td>2001 and later</td></tr></table></body></html>")
     expected_result = ["one two 1998", "three four 1999 - 2000", "five six 2001 - 2014"]

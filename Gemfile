@@ -36,7 +36,7 @@ group :test do
   gem 'mini_backtrace'
   gem 'guard-minitest'
   # gem 'minitest-notification'
-  gem 'fakeweb', github: 'chrisk/fakeweb', branch: 'master'
+  gem 'webmock'
 end
 
 group :production do

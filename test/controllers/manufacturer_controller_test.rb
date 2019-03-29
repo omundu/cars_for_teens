@@ -2,6 +2,10 @@ require 'test_helper'
 
 class ManufacturerControllerTest < ActionController::TestCase
 
+  setup do
+    stub_requests
+  end
+
   test "should get index page" do
     get :index
 

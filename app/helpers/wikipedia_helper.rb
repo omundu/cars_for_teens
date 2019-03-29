@@ -1,4 +1,5 @@
 module WikipediaHelper
+
   ABSTRACT_URL = "http://dbpedia.org/ontology/abstract"
   DISAMBIGUTION_URL = "http://dbpedia.org/ontology/wikiPageDisambiguates"
   REDIRECT_URL = "http://dbpedia.org/ontology/wikiPageRedirects"
@@ -122,4 +123,5 @@ module WikipediaHelper
       Wikipedia.find(x).sanitized_content.split('<p>==History==</p>').first
     end
   end
+
 end

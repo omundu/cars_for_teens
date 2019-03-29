@@ -13,8 +13,11 @@ module RequestStubHelpers
     stub_request(:get, 'https://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/pajero/2011').
       to_return(:body => File.open(File.expand_path('.', 'test/files/safety_rating_sample_uno.html')).read)
 
+    stub_request(:get, 'https://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/pajero/2019').
+      to_return(:body => File.open(File.expand_path('.', 'test/files/safety_rating_sample_tres.html')).read)
+
     stub_request(:get, 'https://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/lancer-evolution/2020').
-      to_return(:body => File.open(File.expand_path('.', 'test/files/safety_rating_sample_dos.html')).read)
+      to_return(:body => File.open(File.expand_path('.', 'test/files/safety_rating_sample_tres.html')).read)
 
     stub_request(:get, 'https://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/lancer-evolution/2010').
       to_return(:body => File.open(File.expand_path('.', 'test/files/safety_rating_sample_dos.html')).read)

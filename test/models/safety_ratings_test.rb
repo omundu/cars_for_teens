@@ -20,6 +20,19 @@ class SafetyRatingsTest < ActiveSupport::TestCase
     assert_equal ratings, @safety_ratings.ratings
   end
 
+  test 'ratings when "small overlap front" is present' do
+    ratings = [
+      {:rating_type=>"Small overlap front: Driver-side", :rating_value=>"G"},
+      {:rating_type=>"Small overlap front: Passenger-side", :rating_value=>"NR"},
+      {:rating_type=>"Moderate overlap front", :rating_value=>"G"},
+      {:rating_type=>"Side", :rating_value=>"G"},
+      {:rating_type=>"Roof strength", :rating_value=>"G"},
+      {:rating_type=>"Head restraints & seats", :rating_value=>"G"}
+    ]
+
+    assert_equal ratings, SafetyRatings.new(@model_hash.merge({year: 2019})).ratings
+  end
+
   test "cached_ratings" do
     ratings = [
       {:rating_type=>"Moderate overlap front", :rating_value=>"G"},

@@ -5,6 +5,8 @@ class SafetyRatingsTest < ActiveSupport::TestCase
   setup do
     @model_hash = {manufacturer: "Mitsubishi", model: "Pajero", year: 2011}
     @safety_ratings = SafetyRatings.new(@model_hash)
+
+    stub_requests
   end
 
   test "ratings" do

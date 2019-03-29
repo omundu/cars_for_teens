@@ -2,6 +2,10 @@ require 'test_helper'
 
 class CarControllerTest < ActionController::TestCase
 
+  setup do
+    stub_requests
+  end
+
   test "should get model" do
     get :model, {manufacturer: "Mitsubishi", model: "Outlander Sport"}
 

@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class WikipediaControllerTest < ActionController::TestCase
+
+  setup do
+    stub_requests
+  end
+
   test "should get manufacturer" do
     get :manufacturer, manufacturer: "Mitsubishi"
 
@@ -14,4 +19,5 @@ class WikipediaControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :partial => false
   end
+
 end

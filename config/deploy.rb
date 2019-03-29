@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+lock '3.11.0'
 server '104.236.206.30', port: 5753, roles: [:web, :app, :db], primary: true
 
 set :application, 'cars_for_teens'

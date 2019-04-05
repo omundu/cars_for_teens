@@ -7,14 +7,14 @@ class WikipediaControllerTest < ActionController::TestCase
   end
 
   test "should get manufacturer" do
-    get :manufacturer, manufacturer: "Mitsubishi"
+    get :manufacturer, params: {manufacturer: "Mitsubishi"}
 
     assert_response :success
     assert_template :partial => false
   end
 
   test "should get model" do
-    get :model, manufacturer: "Mitsubishi", model: "Pajero"
+    get :model, params: {manufacturer: "Mitsubishi", model: "Pajero"}
 
     assert_response :success
     assert_template :partial => false

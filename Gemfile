@@ -37,6 +37,7 @@ group :test do
   gem 'guard-minitest'
   # gem 'minitest-notification'
   gem 'webmock'
+  gem 'rails-controller-testing'
 end
 
 group :production do

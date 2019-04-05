@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.6.1'
+lock '3.11.0'
 server '104.236.206.30', port: 5753, roles: [:web, :app, :db], primary: true
 
 set :application, 'cars_for_teens'
@@ -25,6 +25,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/secrets.yml config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+append :linked_dirs, '.bundle'
 
 ## Defaults:
 # set :scm,           :git

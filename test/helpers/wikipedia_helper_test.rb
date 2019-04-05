@@ -2,6 +2,10 @@ require 'test_helper'
 
 class WikipediaHelperTest < ActionView::TestCase
 
+  setup do
+    stub_requests
+  end
+
   test "get wikipedia summary" do
     urls = {
       data_url: "http://dbpedia.org/data/Mitsubishi_Motors.json",

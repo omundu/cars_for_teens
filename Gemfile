@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.6.2'
 
 gem 'rails', '~> 5.1'
 gem 'sass-rails'
@@ -34,8 +35,8 @@ group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
   gem 'guard-minitest'
-  gem 'minitest-osx'
-  gem 'fakeweb'
+  # gem 'minitest-notification'
+  gem 'webmock'
 end
 
 group :production do

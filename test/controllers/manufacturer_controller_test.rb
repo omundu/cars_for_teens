@@ -14,7 +14,7 @@ class ManufacturerControllerTest < ActionController::TestCase
   end
 
   test "should show a particular manufacturer" do
-    get :show, :manufacturer => "Skoda"
+    get :show, :params => {:manufacturer => "Skoda"}
 
     assert_response :success
     assert_select "title", "Skoda"

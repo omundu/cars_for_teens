@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.6.2'
+ruby '3.4.10'
 
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.1'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -16,6 +16,9 @@ gem 'foundation-rails', '~> 5.0'
 
 gem 'puma'
 gem 'newrelic_rpm'
+
+gem 'mutex_m'
+gem  'drb'
 
 gem 'sdoc', group: :doc
 
@@ -32,6 +35,7 @@ group :development do
 end
 
 group :test do
+  gem 'minitest', '~> 5.26'
   gem 'minitest-reporters'
   gem 'mini_backtrace'
   gem 'guard-minitest'

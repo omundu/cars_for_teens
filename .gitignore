@@ -48,3 +48,8 @@ bower.json
 
 # Ignore Spring files.
 /spring/*.pid
+
+# Docker and environment variables
+.env
+.env.*
+!.env.example

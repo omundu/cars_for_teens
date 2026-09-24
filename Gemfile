@@ -44,7 +44,14 @@ group :test do
   gem 'rails-controller-testing'
 end
 
-gem 'dotenv', groups: [:development, :test]
+group :test, :ci do
+  gem "bundler-audit"
+  gem "brakeman"
+  gem "rubocop"
+end
+
+
+gem 'dotenv', groups: [:development, :test, :ci]
 
 group :production do
   gem 'rails_12factor'

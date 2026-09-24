@@ -1,5 +1,8 @@
+require 'open-uri'
+
 class CarExtractor
-  require 'open-uri'
+
+  IIHS_TEEN_CAR_WEBPAGE = 'https://www.iihs.org/ratings/safe-vehicles-for-teens'
 
   attr_reader :cars
 
@@ -69,7 +72,7 @@ class CarExtractor
   private
 
   def fetch_page
-    Nokogiri::HTML(open("https://www.iihs.org/iihs/ratings/vehicles-for-teens"))
+    Nokogiri::HTML(URI.open(IIHS_TEEN_CAR_WEBPAGE))
   end
 
 end

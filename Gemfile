@@ -18,7 +18,7 @@ gem 'puma'
 gem 'newrelic_rpm'
 
 gem 'mutex_m'
-gem  'drb'
+gem 'drb'
 
 gem 'sdoc', group: :doc
 

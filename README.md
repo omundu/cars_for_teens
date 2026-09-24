@@ -1,7 +1,7 @@
 # Cars For Teens #
 
 
-![Codeship Badge](https://codeship.com/projects/364df8e0-cbc0-0132-5675-0ab1fdf68077/status?branch=master)
+[![Ruby on Rails CI](https://github.com/omundu/cars_for_teens/actions/workflows/rubyonrails.yml/badge.svg?branch=main)](https://github.com/omundu/cars_for_teens/actions/workflows/rubyonrails.yml)
  
 Came across the IIHS list of what they consider [the safest cars for teens](http://www.iihs.org/iihs/ratings/vehicles-for-teens). In my desire to look at each car, I came up with the idea to create some sort of interface to view the cars that made the list.
 

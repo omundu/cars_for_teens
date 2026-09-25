@@ -2,8 +2,6 @@ require 'open-uri'
 
 class CarExtractor
 
-  IIHS_TEEN_CAR_WEBPAGE = 'https://www.iihs.org/ratings/safe-vehicles-for-teens'
-
   attr_reader :cars
 
   def initialize

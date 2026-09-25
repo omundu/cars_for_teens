@@ -1,13 +1,13 @@
 module RequestStubHelpers
 
   def stub_requests
-    stub_request(:get, 'https://www.iihs.org/iihs/ratings/vehicles-for-teens').
-      to_return(:body => "You have arrived")
+    stub_request(:get, IIHS_TEEN_CAR_WEBPAGE).
+      to_return(:body => File.read(File.expand_path('.', 'test/files/safe_vehicles_for_teens.html')))
 
-    stub_request(:get, 'http://dbpedia.org/data/Mitsubishi_Motors.json').
+    stub_request(:get, 'https://dbpedia.org/data/Mitsubishi_Motors.json').
       to_return(:body => File.read(File.expand_path('.', 'test/files/mitsubishi_motors.json')))
 
-    stub_request(:get, 'http://dbpedia.org/data/Mitsubishi_Pajero.json').
+    stub_request(:get, 'https://dbpedia.org/data/Mitsubishi_Pajero.json').
       to_return(:body => File.read(File.expand_path('.', 'test/files/mitsubishi_pajero.json')))
 
     stub_request(:get, 'https://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/pajero/2011').

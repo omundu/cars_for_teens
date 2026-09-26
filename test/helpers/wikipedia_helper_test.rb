@@ -8,8 +8,8 @@ class WikipediaHelperTest < ActionView::TestCase
 
   test "get wikipedia summary" do
     urls = {
-      data_url: "http://dbpedia.org/data/Mitsubishi_Motors.json",
-      resource_url: "http://dbpedia.org/resource/Mitsubishi_Motors"
+      data_url: "https://dbpedia.org/data/Mitsubishi_Motors.json",
+      resource_url: "https://dbpedia.org/resource/Mitsubishi_Motors"
     }
 
     assert_equal "Error Fectching information....we are looking into it", get_wikipedia_summary(urls)
@@ -27,8 +27,8 @@ class WikipediaHelperTest < ActionView::TestCase
   test "fetch article" do
     skip("mocking data required")
     urls = {
-      data_url: "http://dbpedia.org/data/Mitsubishi_Motors.json",
-      resource_url: "http://dbpedia.org/resource/Mitsubishi_Motors"
+      data_url: "https://dbpedia.org/data/Mitsubishi_Motors.json",
+      resource_url: "https://dbpedia.org/resource/Mitsubishi_Motors"
     }
 
     assert_equal "Allow me to introduce myself", fetch_article(urls)
@@ -37,8 +37,8 @@ class WikipediaHelperTest < ActionView::TestCase
   test "fetch article data" do
     skip("mocking data required")
     urls = {
-      data_url: "http://dbpedia.org/data/Mitsubishi_Motors.json",
-      resource_url: "http://dbpedia.org/resource/Mitsubishi_Motors"
+      data_url: "https://dbpedia.org/data/Mitsubishi_Motors.json",
+      resource_url: "https://dbpedia.org/resource/Mitsubishi_Motors"
     }
 
     assert_equal "This is where we end it", fetch_article_data(urls)
@@ -46,7 +46,7 @@ class WikipediaHelperTest < ActionView::TestCase
 
   test "fetch article summary" do
     skip("mocking data required")
-    article_data = {"http://dbpedia.org/resource/Mitsubishi_Motors" => []}
+    article_data = {"https://dbpedia.org/resource/Mitsubishi_Motors" => []}
 
     assert_equal "", fetch_article_summary(article_data)
   end
@@ -84,11 +84,11 @@ class WikipediaHelperTest < ActionView::TestCase
   end
 
   test "build data url" do
-    assert_equal "http://dbpedia.org/data/Banana.json", build_data_url("Banana")
+    assert_equal "https://dbpedia.org/data/Banana.json", build_data_url("Banana")
   end
 
   test "build resource url" do
-    assert_equal "http://dbpedia.org/resource/Apple", build_resource_url("Apple")
+    assert_equal "https://dbpedia.org/resource/Apple", build_resource_url("Apple")
   end
 
 end

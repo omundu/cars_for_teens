@@ -1,0 +1,47 @@
+IIHS_TEEN_CAR_WEBPAGE = 'https://www.iihs.org/ratings/safe-vehicles-for-teens'
+IIHS_RATINGS_URL = 'https://www.iihs.org/iihs/ratings/vehicle/v'
+IIHS_MODEL_NAME = {
+  "9-5 sedan" => "9-5",
+  "C-Class sedan" => "c-class",
+  "Accord sedan" => "accord-4-door-sedan",
+  "Accord coupe" => "accord-2-door-coupe",
+  "A3" => "a3-4-door-wagon",
+  "200 sedan" => "200-4-door-sedan",
+  "Tribeca/B9 Tribeca" => "tribeca",
+  "A6 sedan" => "a6",
+  "3-series sedan" => "3-series-4-door-sedan",
+  "9-3" => "9-3-4-door-sedan"
+}
+
+WIKIPEDIA_ROOT_URL = 'https://dbpedia.org'
+WIKIPEDIA_ABSTRACT_URL = 'https://dbpedia.org/ontology/abstract'
+WIKIPEDIA_DISAMBIGUTION_URL = 'https://dbpedia.org/ontology/wikiPageDisambiguates'
+WIKIPEDIA_REDIRECT_URL = 'https://dbpedia.org/ontology/wikiPageRedirects'
+WIKIPEDIA_NAMES = {
+  "Saab" => "Saab_Automobile",
+  "Lincoln" => "Lincoln_Motor_Company",
+  "Buick" => "Buick",
+  "Ford" => "Ford_Motor_Company",
+  "Volvo" => "Volvo_Cars",
+  "Toyota" => "Toyota",
+  "Mercedes-Benz" => "Mercedes-Benz",
+  "Honda" => "Honda",
+  "Audi" => "Audi",
+  "Subaru" => "Subaru",
+  "Kia" => "Kia_Motors",
+  "Hyundai" => "Hyundai_Motor_Company",
+  "Dodge" => "Dodge",
+  "Volkswagen" => "Volkswagen_Group",
+  "Chevrolet" => "Chevrolet",
+  "Chrysler" => "Chrysler",
+  "Mercury" => "Mercury_(automobile)",
+  "Mitsubishi" => "Mitsubishi_Motors",
+  "GMC" => "GMC_(automobile)",
+  "Infiniti" => "Infiniti",
+  "Acura" => "Acura",
+  "BMW" => "BMW",
+  "Mazda" => "Mazda",
+  "Saturn" => "Saturn_Corporation",
+  "Suzuki" => "Suzuki",
+  "Nissan" => "Nissan_Motor_Company"
+}

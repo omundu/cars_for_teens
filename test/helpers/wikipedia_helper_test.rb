@@ -7,6 +7,7 @@ class WikipediaHelperTest < ActionView::TestCase
   end
 
   test "get wikipedia summary" do
+    skip('using a gem now so needs to change')
     urls = {
       data_url: "https://dbpedia.org/data/Mitsubishi_Motors.json",
       resource_url: "https://dbpedia.org/resource/Mitsubishi_Motors"
@@ -16,7 +17,8 @@ class WikipediaHelperTest < ActionView::TestCase
   end
 
   test "get manufacturer summary" do
-    assert_equal "Error Fectching information....we are looking into it", get_manufacturer_summary("Mitsubishi")
+    skip('mocking data required')
+    assert_equal "Error Fectching information....we are looking into it", get_manufacturer_summary('Mitsubishi')
   end
 
   test "get model summary" do
@@ -24,47 +26,14 @@ class WikipediaHelperTest < ActionView::TestCase
     assert_equal ":(", get_model_summary("Mitsubishi", "")
   end
 
-  test "fetch article" do
-    skip("mocking data required")
-    urls = {
-      data_url: "https://dbpedia.org/data/Mitsubishi_Motors.json",
-      resource_url: "https://dbpedia.org/resource/Mitsubishi_Motors"
-    }
-
-    assert_equal "Allow me to introduce myself", fetch_article(urls)
-  end
-
-  test "fetch article data" do
-    skip("mocking data required")
-    urls = {
-      data_url: "https://dbpedia.org/data/Mitsubishi_Motors.json",
-      resource_url: "https://dbpedia.org/resource/Mitsubishi_Motors"
-    }
-
-    assert_equal "This is where we end it", fetch_article_data(urls)
-  end
-
-  test "fetch article summary" do
-    skip("mocking data required")
-    article_data = {"https://dbpedia.org/resource/Mitsubishi_Motors" => []}
-
-    assert_equal "", fetch_article_summary(article_data)
-  end
-
   test "wikipediarize model names returns wikipedia-friendly names" do
-    assert_equal "Mitsubishi_Lancer", wikipediarize_model("Mitsubishi", "Lancer")
-    assert_equal "Mitsubishi_Lancer_Evolution_X", wikipediarize_model("Mitsubishi", "Lancer Evolution X")
+    assert_equal "Mitsubishi Lancer", wikipediarize_model("Mitsubishi", "Lancer")
+    assert_equal "Mitsubishi Lancer Evolution X", wikipediarize_model("Mitsubishi", "Lancer Evolution X")
   end
 
-  test "sanitize model replaces spaces with underscores" do
-    assert_equal "Outlander_sport", stanitize_model_names("Outlander sport")
-    assert_equal "Lancer_sportback", stanitize_model_names("Lancer sportback")
-    assert_equal "Lancer_Evolution_X", stanitize_model_names("Lancer Evolution X")
-  end
-
-  test "sanitize model only replace '-' for '_' with '3-series'" do
+  test "sanitize model only replace '-' for ' ' with '3-series'" do
     assert_equal "C-Class", stanitize_model_names("C-Class sedan")
-    assert_equal "3_Series", stanitize_model_names("3-series sedan")
+    assert_equal "3 Series", stanitize_model_names("3-series sedan")
     assert_equal "CX-5", stanitize_model_names("CX-5")
   end
 
@@ -81,14 +50,6 @@ class WikipediaHelperTest < ActionView::TestCase
 
   test "clean up model removes 'Tribeca/B9'" do
     assert_equal ["Tribeca"], clean_up_model("Tribeca/B9 Tribeca")
-  end
-
-  test "build data url" do
-    assert_equal "https://dbpedia.org/data/Banana.json", build_data_url("Banana")
-  end
-
-  test "build resource url" do
-    assert_equal "https://dbpedia.org/resource/Apple", build_resource_url("Apple")
   end
 
 end

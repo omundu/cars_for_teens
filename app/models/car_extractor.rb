@@ -39,18 +39,27 @@ class CarExtractor
   end
 
   def construct_car_information(car_data)
-    vehicle = car_data.first.split
-    manufacturer, *model = vehicle
+    if car_data.first.match(%r{(#{WIKIPEDIA_NAMES.keys.join('|')}) (.+)}i)
+      manufacturer = $1
+      model = $2
+    else
+      manufacturer, *model = car_data.first.split
+    end
+
     years, extra_information = car_data.second.split(";")
 
     {
       manufacturer: manufacturer,
-      model: model.join(" "),
+      model: construct_model(model),
       years: extract_years(years),
       suggested_price: car_data.third.delete("$,").to_i,
-      extra_information: extra_information,
+      extra_information: extra_information&.strip,
       category: car_data.fourth
     }
+  end
+
+  def construct_model(model)
+    model.is_a?(Array) ? model.join(' ') : model
   end
 
   def extract_years(year)

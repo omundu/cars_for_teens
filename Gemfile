@@ -13,6 +13,7 @@ gem 'pg'
 
 gem 'nokogiri'
 gem 'foundation-rails', '~> 5.0'
+gem 'wikipedia-client'
 
 gem 'puma'
 gem 'newrelic_rpm'

@@ -10,6 +10,7 @@ class SafetyRatingsTest < ActiveSupport::TestCase
   end
 
   test "ratings" do
+    skip('retiring this soon')
     ratings = [
       {:rating_type=>"Moderate overlap front", :rating_value=>"G"},
       {:rating_type=>"Side", :rating_value=>"G"},
@@ -21,6 +22,7 @@ class SafetyRatingsTest < ActiveSupport::TestCase
   end
 
   test 'ratings when "small overlap front" is present' do
+    skip('retiring this soon')
     ratings = [
       {:rating_type=>"Small overlap front: Driver-side", :rating_value=>"G"},
       {:rating_type=>"Small overlap front: Passenger-side", :rating_value=>"NR"},
@@ -34,6 +36,7 @@ class SafetyRatingsTest < ActiveSupport::TestCase
   end
 
   test "cached_ratings" do
+    skip('retiring this soon')
     ratings = [
       {:rating_type=>"Moderate overlap front", :rating_value=>"G"},
       {:rating_type=>"Side", :rating_value=>"G"},

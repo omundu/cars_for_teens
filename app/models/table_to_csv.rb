@@ -1,9 +1,9 @@
 #Adapted from Sandeep Srinivasa at https://gist.github.com/sandys/3910840
+require 'nokogiri'
+require 'csv'
+require 'open-uri'
 
 class TableToCsv
-  require 'nokogiri'
-  require 'csv'
-  require 'open-uri'
   
   def initialize
     write_csv(fetch_data.cars)
@@ -23,7 +23,7 @@ class TableToCsv
   end
   
   def csv_path
-    "public/files/output.csv"
+    "public/files/output-#{Date.today.year}.csv"
   end
   
 end

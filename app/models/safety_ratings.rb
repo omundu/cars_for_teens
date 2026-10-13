@@ -58,7 +58,8 @@ class SafetyRatings
   private
 
   def ratings_section
-    fetch_ratings_page.css('.rating-list li')
+    # fetch_ratings_page.css('.rating-list li')
+    []
   end
 
   def fetch_ratings_page

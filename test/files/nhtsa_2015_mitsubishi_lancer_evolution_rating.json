@@ -1,0 +1,35 @@
+{
+  "Count": 1,
+  "Message": "Results returned successfully",
+  "Results": [
+    {
+      "OverallRating": "Not Rated",
+      "OverallFrontCrashRating": "Not Rated",
+      "FrontCrashDriversideRating": "Not Rated",
+      "FrontCrashPassengersideRating": "Not Rated",
+      "OverallSideCrashRating": "Not Rated",
+      "SideCrashDriversideRating": "Not Rated",
+      "SideCrashPassengersideRating": "Not Rated",
+      "combinedSideBarrierAndPoleRating-Front": "Not Rated",
+      "combinedSideBarrierAndPoleRating-Rear": "Not Rated",
+      "sideBarrierRating-Overall": "Not Rated",
+      "RolloverRating": "Not Rated",
+      "RolloverRating2": "Not Rated",
+      "RolloverPossibility": 0.0,
+      "RolloverPossibility2": 0.0,
+      "dynamicTipResult": " ",
+      "SidePoleCrashRating": "Not Rated",
+      "NHTSAElectronicStabilityControl": "Standard",
+      "NHTSAForwardCollisionWarning": "No",
+      "NHTSALaneDepartureWarning": "No",
+      "ComplaintsCount": 26,
+      "RecallsCount": 2,
+      "InvestigationCount": 1,
+      "ModelYear": 2015,
+      "Make": "MITSUBISHI",
+      "Model": "LANCER EVOLUTION",
+      "VehicleDescription": "2015 Mitsubishi Lancer Evolution 4 DR AWD",
+      "VehicleId": 9715
+    }
+  ]
+}

@@ -19,11 +19,17 @@ class CategoriesController < ApplicationController
   end
   
   def year
-    manufacturer, *model = params[:model].split
-    model = model.join(" ")
+    if params[:model].match(%r{(#{WIKIPEDIA_NAMES.keys.join('|')}) (.+)}i)
+      manufacturer = $1
+      model = $2
+    else
+      manufacturer, *model = params[:model].split
+      model = model.join(" ")
+    end
     
     @title = "#{params[:model]} #{params[:year]}"
     @safety_rating = SafetyRatings.new({manufacturer: manufacturer, model: model, year: params[:year]})
+    @nhtsa_safety_rating = NhtsaSafetyRating.new({manufacturer: manufacturer, model: model, year: params[:year]})
   end
   
 end

@@ -1,0 +1,14 @@
+<div id="nhtsa-safety-rating">
+  
+  <h4>NHTSA Safety Ratings</h4>
+  
+  <div id="ratings">
+    <% @nhtsa_safety_rating.get_ratings.each do |rating| %>
+      <div class="row">
+        <div class="large-12 columns"><h5><%= rating["VehicleDescription"] %></h5></div>
+      </div>
+        <%= render partial: "nhtsa_safety_rating/trim_rating", locals: {trim: rating} %>
+    <% end %>
+  </div>
+  
+</div>

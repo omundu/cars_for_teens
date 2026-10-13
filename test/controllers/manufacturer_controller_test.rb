@@ -2,6 +2,10 @@ require 'test_helper'
 
 class ManufacturerControllerTest < ActionController::TestCase
 
+  setup do
+    stub_requests
+  end
+
   test "should get index page" do
     get :index
 
@@ -10,7 +14,7 @@ class ManufacturerControllerTest < ActionController::TestCase
   end
 
   test "should show a particular manufacturer" do
-    get :show, :manufacturer => "Skoda"
+    get :show, :params => {:manufacturer => "Skoda"}
 
     assert_response :success
     assert_select "title", "Skoda"

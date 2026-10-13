@@ -1,5 +1,5 @@
 <div class="manufacturers">
   <% @manufacturers.sort.each do |manufacturer| %>
-    <%= link_to manufacturer, manufacturer_url(manufacturer), :class => "logo", :id =>  "#{manufacturer.downcase}"%>
+    <%= link_to manufacturer, manufacturer_url(manufacturer), :class => "logo", :id =>  "#{manufacturer.downcase.parameterize}"%>
   <% end %>
 </div>

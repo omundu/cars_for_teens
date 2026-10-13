@@ -1,4 +1,5 @@
 class Car
+  
   attr_reader :manufacturer, :model, :years, :suggested_price, :extra_information, :category
   
   def initialize(car_attributes)

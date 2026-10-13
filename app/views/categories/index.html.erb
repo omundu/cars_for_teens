@@ -3,7 +3,7 @@
     <div class="categories">
       <% @categories.sort.each do |category| %>
         <div class="car">
-          <%= link_to category.downcase, category_path(category), :class => "car_icon", :id =>  "#{category.parameterize('_')}"%>
+          <%= link_to category.downcase, category_path(category), :class => "car_icon", :id => "#{category.parameterize(separator: '_')}"%>
         </div>
       <% end %>
     </div>

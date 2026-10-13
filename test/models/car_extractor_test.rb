@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class CarExtractorTest < ActiveSupport::TestCase
+
+  setup do
+    stub_requests
+  end
+
   test "get car array" do
     html_doc = Nokogiri::HTML("<html><body><table><tr><td>one two</td><td>1998</td></tr><tr><td>three four</td><td>1999-00</td></tr><tr><td>five six</td><td>2001 and later</td></tr></table></body></html>")
     expected_result = ["one two 1998", "three four 1999 - 2000", "five six 2001 - 2014"]
@@ -74,6 +79,8 @@ class CarExtractorTest < ActiveSupport::TestCase
     row1 = ["fiat pogo", "2009", "$2604", "Kei Car"]
     row2 = ["kia rogue", "2010 and later", "$3715", "CUV"]
     row3 = ["bmw X-5 M", "2005-08; built after October 2004", "$4826", "SUV"]
+    row4 = ["alfa romeo Guilia", "2019-21; excluding hybrid", "$8450", "Sedan"]
+    row5 = ["Mercedes-Benz C-Class Coupe", "2011-15; 4 cylinder turbo", "$2319", "Coupe"]
 
     car0 = {
       :manufacturer => "ford",
@@ -104,14 +111,32 @@ class CarExtractorTest < ActiveSupport::TestCase
       :model => "X-5 M",
       :years => [2005, 2006, 2007, 2008],
       :suggested_price => 4826,
-      :extra_information => " built after October 2004",
+      :extra_information => "built after October 2004",
       :category => "SUV"
+    }
+    car4 = {
+      :manufacturer => "alfa romeo",
+      :model => "Guilia",
+      :years => [2019, 2020, 2021],
+      :suggested_price => 8450,
+      :extra_information => "excluding hybrid",
+      :category => "Sedan"
+    }
+    car5 = {
+      :manufacturer => "Mercedes-Benz",
+      :model => "C-Class Coupe",
+      :years => [2011, 2012, 2013, 2014, 2015],
+      :suggested_price => 2319,
+      :extra_information => "4 cylinder turbo",
+      :category => "Coupe"
     }
 
     assert_equal car0, CarExtractor.new.construct_car_information(row0)
     assert_equal car1, CarExtractor.new.construct_car_information(row1)
     assert_equal car2, CarExtractor.new.construct_car_information(row2)
     assert_equal car3, CarExtractor.new.construct_car_information(row3)
+    assert_equal car4, CarExtractor.new.construct_car_information(row4)
+    assert_equal car5, CarExtractor.new.construct_car_information(row5)
   end
 
   test "extract years" do

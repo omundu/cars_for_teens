@@ -1,20 +1,7 @@
+require 'json'
+require 'open-uri'
+
 class NhtsaSafetyRating
-  require 'json'
-  require 'open-uri'
-  
-  MODEL_NAME = {
-    "9-5 sedan" => "9-5",
-    "C-Class sedan" => "c-class",
-    "Accord sedan" => "accord",
-    "Accord coupe" => "accord",
-    "A3" => "a3-4-door-wagon",
-    "200 sedan" => "200",
-    "Tribeca/B9 Tribeca" => "tribeca",
-    "A6 sedan" => "a6",
-    "6" => "mazda6",
-    "3-series sedan" => "3 Series",
-    "Town & Country" => "Town and Country"
-  }
   
   def initialize(options)
     @manufacturer = sanitize_manufacturer(options[:manufacturer])
@@ -27,8 +14,8 @@ class NhtsaSafetyRating
   end
   
   def sanitize_model(model)
-    correct_name = MODEL_NAME[model] || model
-    correct_name.parameterize("%20")
+    correct_name = NHTSA_MODEL_NAME.fetch(model, model)
+    correct_name.parameterize(separator: '%20')
   end
   
   def cached_ratings
@@ -41,7 +28,7 @@ class NhtsaSafetyRating
   
   def get_trim_information
     get_trim_ids.collect do |trim_id|
-      JSON.parse(open(ratings_uri(trim_id)).read)
+      JSON.parse(URI.open(ratings_uri(trim_id)).read)
     end
   end
   
@@ -50,16 +37,16 @@ class NhtsaSafetyRating
   end
   
   def get_trims
-    JSON.parse(open(trim_uri).read)
+    JSON.parse(URI.open(trim_uri).read)
   end
   
   
   def trim_uri
-    "http://www.nhtsa.gov/webapi/api/SafetyRatings/modelyear/#{@year}/make/#{@manufacturer}/model/#{@model}?format=json"
+    "#{NHTSA_API_URL}/SafetyRatings/modelyear/#{@year}/make/#{@manufacturer}/model/#{@model}?format=json"
   end
   
   def ratings_uri(vehicle_id)
-    "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/#{vehicle_id}?format=json"
+    "#{NHTSA_API_URL}/SafetyRatings/VehicleId/#{vehicle_id}?format=json"
   end
   
 end

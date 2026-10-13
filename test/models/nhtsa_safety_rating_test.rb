@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class NhtsaSafetyRatingTest < ActiveSupport::TestCase
+
   setup do
+    stub_requests
+
     @model_hash = {manufacturer: "Hyundai", model: "Veracruz", year: 2012}
     @nhtsa_safety_ratings = NhtsaSafetyRating.new(@model_hash)
   end
@@ -216,15 +219,15 @@ class NhtsaSafetyRatingTest < ActiveSupport::TestCase
   end
   
   test "trim_uri" do
-    hyundai_uri = "http://www.nhtsa.gov/webapi/api/SafetyRatings/modelyear/2012/make/hyundai/model/veracruz?format=json"
+    hyundai_uri = 'https://api.nhtsa.gov/SafetyRatings/modelyear/2012/make/hyundai/model/veracruz?format=json'
     
     assert_equal hyundai_uri, @nhtsa_safety_ratings.trim_uri
   end
   
   test "ratings_uri" do
-    double_0_7 = "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/1007?format=json"
-    boom = "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/boom?format=json"
-    palindrome = "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/12321?format=json"
+    double_0_7 = 'https://api.nhtsa.gov/SafetyRatings/VehicleId/1007?format=json'
+    boom = 'https://api.nhtsa.gov/SafetyRatings/VehicleId/boom?format=json'
+    palindrome = 'https://api.nhtsa.gov/SafetyRatings/VehicleId/12321?format=json'
     
     assert_equal double_0_7, @nhtsa_safety_ratings.ratings_uri(1007)
     assert_equal boom, @nhtsa_safety_ratings.ratings_uri("boom")

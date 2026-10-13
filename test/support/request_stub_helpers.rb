@@ -24,37 +24,24 @@ module RequestStubHelpers
 
     stub_request(:get, 'https://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/lancer-evolution/2010').
       to_return(:body => File.read(File.expand_path('.', 'test/files/safety_rating_sample_dos.html')))
+    
+    stub_request(:get, 'https://api.nhtsa.gov/SafetyRatings/modelyear/2012/make/hyundai/model/veracruz?format=json').
+      to_return(:body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trims.json")).read)
 
-    FakeWeb.register_uri(:get, "http://www.iihs.org/iihs/ratings/vehicles-for-teens", :body => "You have arrived")
-  
-    FakeWeb.register_uri(:get, "http://dbpedia.org/data/Mitsubishi_Motors.json",
-      :content_type => "application/json",
-      :body => File.open(File.expand_path(".", "test/files/mitsubishi_motors.json")).read
-    )
+    stub_request(:get, 'https://api.nhtsa.gov/SafetyRatings/modelyear/2010/make/mitsubishi/model/lancer%20evolution?format=json').
+      to_return(:body => File.open(File.expand_path(".", "test/files/nhtsa_2015_mitsubishi_lancer_evolution.json")).read)
+
+    stub_request(:get, 'https://api.nhtsa.gov/SafetyRatings/modelyear/2015/make/mitsubishi/model/lancer%20evolution?format=json').
+      to_return(:body => File.open(File.expand_path(".", "test/files/nhtsa_2015_mitsubishi_lancer_evolution.json")).read)
     
-    FakeWeb.register_uri(:get, "http://dbpedia.org/data/Mitsubishi_Pajero.json",
-      :content_type => "application/json",
-      :body => File.open(File.expand_path(".", "test/files/mitsubishi_pajero.json")).read
-    )
+    stub_request(:get, 'https://api.nhtsa.gov/SafetyRatings/VehicleId/6751?format=json').
+      to_return(:body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trima.json")).read)
     
-    FakeWeb.register_uri(:get, "http://www.iihs.org/iihs/ratings/vehicle/v/mitsubishi/pajero/2011",
-      :body => File.open(File.expand_path(".", "test/files/safety_rating_sample.html")).read
-    )
-    
-    FakeWeb.register_uri(:get, "http://www.nhtsa.gov/webapi/api/SafetyRatings/modelyear/2012/make/Hyundai/model/veracruz?format=json",
-      :content_type => "application/json",
-      :body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trims.json")).read
-    )
-    
-    FakeWeb.register_uri(:get, "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/6751?format=json",
-      :content_type => "application/json",
-      :body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trima.json")).read
-    )
-    
-    FakeWeb.register_uri(:get, "http://www.nhtsa.gov/webapi/api/SafetyRatings/VehicleId/6114?format=json",
-      :content_type => "application/json",
-      :body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trimb.json")).read
-    )
+    stub_request(:get, 'https://api.nhtsa.gov/SafetyRatings/VehicleId/6114?format=json').
+      to_return(:body => File.open(File.expand_path(".", "test/files/nhtsa_hyundai_veracruz_trimb.json")).read)
+
+    stub_request(:get, 'https://api.nhtsa.gov/SafetyRatings/VehicleId/9715?format=json').
+      to_return(:body => File.open(File.expand_path(".", "test/files/nhtsa_2015_mitsubishi_lancer_evolution_rating.json")).read)
   end
 
 end

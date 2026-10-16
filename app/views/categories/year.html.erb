@@ -10,16 +10,18 @@
     </nav>
 
     <div class="content">
-      <p>
-        Available trims and images coming soon
-      </p>
-      <p><%= @nhtsa_safety_rating.trim_uri %></p>
+      
+      <%= content_tag :p, 'Available trims and images coming soon' %>
+      
+      <%= content_tag :p, @nhtsa_safety_rating.trim_uri %>
+
+      <%= render 'nhtsa_safety_rating/safety_ratings' %>
+
     </div>
   </div>
 
   <div class="large-3 pull-9 columns">
     <%= content_tag(:span, "", :class => "car_icon", :id => "#{params[:category].parameterize(separator: '_')}") %>
     <%= render 'iihs_safety_rating/safety_rating' %>
-    <%= render 'nhtsa_safety_rating/safety_ratings' %>
   </div>
 </div>

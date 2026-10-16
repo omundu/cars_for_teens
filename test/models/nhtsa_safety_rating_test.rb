@@ -237,6 +237,7 @@ class NhtsaSafetyRatingTest < ActiveSupport::TestCase
 end
 
 class SanitizeManufacturer < ActiveSupport::TestCase
+
   setup do
     @model_hash = {manufacturer: "Hyundai", model: "Veracruz", year: 2012}
     @nhtsa_safety_ratings = NhtsaSafetyRating.new(@model_hash)
@@ -253,6 +254,7 @@ class SanitizeManufacturer < ActiveSupport::TestCase
   test "titlecase manufacturer name is transformed to lowercase 'Saab' -> 'saab'" do
     assert_equal "saab", @nhtsa_safety_ratings.sanitize_manufacturer("Saab")
   end
+
 end
 
 class SanitizeModel < ActiveSupport::TestCase
@@ -329,21 +331,25 @@ class SanitizeModel < ActiveSupport::TestCase
   test "'6' is transformed to 'mazda6'" do
     assert_equal "mazda6", @nhtsa_safety_ratings.sanitize_model("6")
   end
+  
 end
 
 class SanitizeBmwModel < ActiveSupport::TestCase
+
   setup do
     @model_hash = {manufacturer: "BMW", model: "3-series sedan", year: 2012}
     @nhtsa_safety_ratings = NhtsaSafetyRating.new(@model_hash)
   end
   
-  test "Unaffected 3-Series sedans recieve the generic treatment" do
-    (2006..2010).each do |year|
+   (2006..2010).each do |year|
+    
+    test "Unaffected #{year} 3-Series sedans recieve the generic treatment" do
       model_hash = {manufacturer: "BMW", model: "3-series sedan", year: year}
       nhtsa_safety_ratings = NhtsaSafetyRating.new(model_hash)
       
       assert_equal "3%20series", nhtsa_safety_ratings.sanitize_model("3-series sedan")
     end
+
   end
 
   # BMW 3 series needs customized handling for 2011 - 2014 model years

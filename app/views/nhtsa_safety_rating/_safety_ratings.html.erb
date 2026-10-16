@@ -2,13 +2,15 @@
   
   <h4>NHTSA Safety Ratings</h4>
   
-  <div id="ratings">
-    <% @nhtsa_safety_rating.get_ratings.each do |rating| %>
-      <div class="row">
-        <div class="large-12 columns"><h5><%= rating["VehicleDescription"] %></h5></div>
-      </div>
-        <%= render partial: "nhtsa_safety_rating/trim_rating", locals: {trim: rating} %>
+  <dl id="ratings" class="accordion" data-accordion>
+    <% @nhtsa_safety_rating.get_ratings.each_with_index do |rating, index| %>
+      <dd class="accordion-navigation">
+        <%= tag.a href: "#rating#{index}", data: {content: "rating#{index}" } do %>
+          <%= rating["VehicleDescription"] %>
+        <% end %>
+        <%= render partial: "nhtsa_safety_rating/trim_rating", locals: {trim: rating, index: index} %>
+      </dd>
     <% end %>
-  </div>
+  </dl>
   
 </div>

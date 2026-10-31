@@ -211,6 +211,7 @@ GEM
     net-ssh (7.3.3)
     newrelic_rpm (10.8.0)
       logger
+    nhtsa (0.2.1)
     nio4r (2.7.5)
     nkf (0.3.0)
     nokogiri (1.19.4-x86_64-linux-gnu)
@@ -387,6 +388,7 @@ DEPENDENCIES
   minitest-reporters
   mutex_m
   newrelic_rpm
+  nhtsa
   nokogiri
   pg
   puma

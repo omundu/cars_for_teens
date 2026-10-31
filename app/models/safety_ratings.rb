@@ -9,7 +9,7 @@ class SafetyRatings
   end
 
   def cached_ratings
-    Rails.cache.fetch([@manufacturer, @model, @year]) { ratings }
+    Rails.cache.fetch(["iihs", @manufacturer, @model, @year]) { ratings }
   end
 
   def ratings

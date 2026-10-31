@@ -1,0 +1,32 @@
+{
+  "Count":1,
+  "Message":"Results returned successfully",
+  "Results":
+  [
+    {
+      "OverallRating":"Not Rated",
+      "OverallFrontCrashRating":"Not Rated",
+      "FrontCrashDriversideRating":"Not Rated",
+      "FrontCrashPassengersideRating":"Not Rated",
+      "OverallSideCrashRating":"Not Rated",
+      "SideCrashDriversideRating":"Not Rated",
+      "SideCrashPassengersideRating":"Not Rated",
+      "RolloverRating":"4",
+      "RolloverRating2":"Not Rated",
+      "RolloverPossibility":0.1590,
+      "RolloverPossibility2":0,
+      "SidePoleCrashRating":"Not Rated",
+      "NHTSAElectronicStabilityControl":"Standard",
+      "NHTSAForwardCollisionWarning":"No",
+      "NHTSALaneDepartureWarning":"No",
+      "ComplaintsCount":2,
+      "RecallsCount":1,
+      "InvestigationCount":0,
+      "ModelYear":2012,
+      "Make":"HYUNDAI",
+      "Model":"VERACRUZ",
+      "VehicleDescription":"2012 Hyundai Veracruz SUV AWD",
+      "VehicleId":6751
+    }
+  ]
+}

@@ -14,10 +14,10 @@ class CarControllerTest < ActionController::TestCase
   end
 
   test "should get year" do
-    get :year, params: {manufacturer: "Mitsubishi", model: "Lancer Evolution", year: 2020}
+    get :year, params: {manufacturer: "Mitsubishi", model: "Lancer Evolution", year: 2015}
 
     assert_response :success
-    assert_select "title", "Mitsubishi Lancer Evolution 2020"
+    assert_select "title", "Mitsubishi Lancer Evolution 2015"
   end
 
 end

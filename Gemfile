@@ -13,6 +13,7 @@ gem 'pg'
 
 gem 'nokogiri'
 gem 'foundation-rails', '~> 5.0'
+gem 'nhtsa'
 gem 'wikipedia-client'
 
 gem 'puma'
@@ -51,7 +52,6 @@ group :test, :ci do
   gem "brakeman"
   gem "rubocop"
 end
-
 
 gem 'dotenv', groups: [:development, :test, :ci]
 

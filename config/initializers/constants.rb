@@ -13,6 +13,21 @@ IIHS_MODEL_NAME = {
   '9-3' => '9-3-4-door-sedan'
 }
 
+NHTSA_API_URL = 'https://api.nhtsa.gov'
+NHTSA_MODEL_NAME = {
+  "9-5 sedan" => "9-5",
+  "C-Class sedan" => "c-class",
+  "Accord sedan" => "accord",
+  "Accord coupe" => "accord",
+  "A3" => "a3-4-door-wagon",
+  "200 sedan" => "200",
+  "Tribeca/B9 Tribeca" => "tribeca",
+  "A6 sedan" => "a6",
+  "6" => "mazda6",
+  "3-series sedan" => "3 Series",
+  "Town & Country" => "Town and Country"
+}
+
 WIKIPEDIA_ROOT_URL = 'https://dbpedia.org'
 WIKIPEDIA_ABSTRACT_URL = 'https://dbpedia.org/ontology/abstract'
 WIKIPEDIA_DISAMBIGUTION_URL = 'https://dbpedia.org/ontology/wikiPageDisambiguates'

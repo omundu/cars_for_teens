@@ -11,9 +11,13 @@
     </nav>
     
     <div class="content">
-      <p>
-        Available trims and images coming soon
-      </p>
+      
+      <%= content_tag :p, 'Available trims and images coming soon' %>
+
+      <%= content_tag :p, @nhtsa_safety_rating.trim_uri %>
+
+      <%= render 'nhtsa_safety_rating/safety_ratings' %>
+
     </div>
   </div>
   

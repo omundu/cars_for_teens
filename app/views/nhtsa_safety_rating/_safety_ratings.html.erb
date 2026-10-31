@@ -1,0 +1,16 @@
+<div id="nhtsa-safety-rating">
+  
+  <h4>NHTSA Safety Ratings</h4>
+  
+  <dl id="ratings" class="accordion" data-accordion>
+    <% @nhtsa_safety_rating.get_ratings.each_with_index do |rating, index| %>
+      <dd class="accordion-navigation">
+        <%= tag.a href: "#rating#{index}", data: {content: "rating#{index}" } do %>
+          <%= rating["VehicleDescription"] %>
+        <% end %>
+        <%= render partial: "nhtsa_safety_rating/trim_rating", locals: {trim: rating, index: index} %>
+      </dd>
+    <% end %>
+  </dl>
+  
+</div>

@@ -1,3 +1,3 @@
 <li data-equalizer-watch>
-  <%= link_to car.name, model_path(car.manufacturer, car.model), class: "button secondary", method: :get %>
+  <%= link_to word_wrap(car.name, line_width: 23), model_path(car.manufacturer, car.model), class: "button secondary" %>
 </li>

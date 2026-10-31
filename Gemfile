@@ -1,38 +1,60 @@
 source 'https://rubygems.org'
 
+ruby '3.3.2'
 
-gem 'rails', '4.1.8'
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'rails', '~> 6.1'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 2.0'
-gem 'sqlite3'
+gem 'jbuilder'
+gem 'pg'
 
 gem 'nokogiri'
+gem 'foundation-rails', '~> 5.0'
+gem 'nhtsa'
+gem 'wikipedia-client'
 
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'puma'
+gem 'newrelic_rpm'
 
-gem 'spring',        group: :development
+gem 'mutex_m'
+gem 'drb'
+gem 'json', '~> 2.6'
 
-group :test do
-  gem 'minitest-reporters', '1.0.5'
-  gem 'mini_backtrace',     '0.1.3'
-  gem 'guard-minitest',     '2.3.1'
-  gem 'minitest-osx'
-  gem 'fakeweb'
+gem 'sdoc', group: :doc
+
+group :development do
+  gem 'spring'
+  gem 'compass'
+  gem 'web-console'
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+  gem 'mechanize'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+group :test do
+  gem 'minitest', '~> 5.26'
+  gem 'minitest-reporters'
+  gem 'mini_backtrace'
+  gem 'guard-minitest'
+  # gem 'minitest-notification'
+  gem 'webmock'
+  gem 'rails-controller-testing'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :test, :ci do
+  gem "bundler-audit"
+  gem "brakeman"
+  gem "rubocop"
+end
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'dotenv', groups: [:development, :test, :ci]
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
+group :production do
+  gem 'rails_12factor'
+end

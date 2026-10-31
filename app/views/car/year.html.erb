@@ -1,1 +1,28 @@
-<%= content_tag :h1, @title %>
+
+<div class="row">
+  <div class="large-9 push-3 columns">
+    <%= content_tag :h1, @title %>
+
+    <nav class="breadcrumbs">
+      <%= link_to "Manufacturers", manufacturers_path %>
+      <%= link_to params[:manufacturer], manufacturer_path(params[:manufacturer]) %>
+      <%= link_to params[:model], model_path(params[:manufacturer], params[:model]) %>
+      <%= link_to params[:year], car_path(params[:manufacturer], params[:model], params[:year]), class: "current" %>
+    </nav>
+    
+    <div class="content">
+      
+      <%= content_tag :p, 'Available trims and images coming soon' %>
+
+      <%= content_tag :p, @nhtsa_safety_rating.trim_uri %>
+
+      <%= render 'nhtsa_safety_rating/safety_ratings' %>
+
+    </div>
+  </div>
+  
+  <div class="large-3 pull-9 columns">
+    <%= render 'summaries/model_summary' %>
+    <%= render 'iihs_safety_rating/safety_rating' %>
+  </div>
+</div>

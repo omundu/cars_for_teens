@@ -1,52 +1,70 @@
+require 'open-uri'
+
 class CarExtractor
-  require 'open-uri'
-  
+
   attr_reader :cars
-  
+
   def initialize
     @cars = get_car_array(fetch_page)
   end
-  
+
   def get_car_array(page)
     data_cells = select_data_cells(page)
-    sanitized_cells = remove_empty_arrays(data_cells)
-    
+    sanitized_cells = remove_header_rows(data_cells)
+
     extract_car_information(sanitized_cells)
   end
-  
-  def remove_empty_arrays(collection)
-    collection.reject{|array| array.empty?}
+
+  def remove_header_rows(collection)
+    collection.select{|array| array.class == Array}
   end
-  
+
   def select_by_element(html_page, element)
     html_page.css(element)
   end
-  
+
   def select_data_cells(html_page)
-    select_by_element(html_page, 'tr').collect{|table_row| select_by_element(table_row, 'td')}
+    category = "vroom"
+    select_by_element(html_page, 'tr').collect do |table_row|
+      if table_row.at_css('th')
+        category = table_row.at_css('th').text
+      else
+        select_by_element(table_row, 'td').map(&:text) << category
+      end
+    end
   end
-  
+
   def extract_car_information(sanitized_data)
-    sanitized_data.collect{|row| Car.new(construct_car_information(row))}
+    sanitized_data.collect{|car_data| Car.new(construct_car_information(car_data))}
   end
-  
-  def construct_car_information(row)
-    vehicle = row.first.content.split
-    manufacturer, *model = vehicle
-    years, extra_information = row[1].content.split(";")
-    
+
+  def construct_car_information(car_data)
+    if car_data.first.match(%r{(#{WIKIPEDIA_NAMES.keys.join('|')}) (.+)}i)
+      manufacturer = $1
+      model = $2
+    else
+      manufacturer, *model = car_data.first.split
+    end
+
+    years, extra_information = car_data.second.split(";")
+
     {
       manufacturer: manufacturer,
-      model: model.join(" "),
+      model: construct_model(model),
       years: extract_years(years),
-      suggested_price: row.last.content.delete("$,").to_i,
-      extra_information: extra_information
+      suggested_price: car_data.third.delete("$,").to_i,
+      extra_information: extra_information&.strip,
+      category: car_data.fourth
     }
   end
-  
+
+  def construct_model(model)
+    model.is_a?(Array) ? model.join(' ') : model
+  end
+
   def extract_years(year)
     latest_year = 2014
-    
+
     case year.length
     when 4
       Array(year.to_i)
@@ -57,11 +75,11 @@ class CarExtractor
       Array(year.split.first.to_i.upto(latest_year))
     end
   end
-  
+
   private
-  
+
   def fetch_page
-    Nokogiri::HTML(open("http://www.iihs.org/iihs/ratings/vehicles-for-teens"))
+    Nokogiri::HTML(URI.open(IIHS_TEEN_CAR_WEBPAGE))
   end
-  
+
 end

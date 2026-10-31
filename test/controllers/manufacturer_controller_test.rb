@@ -1,15 +1,22 @@
 require 'test_helper'
 
 class ManufacturerControllerTest < ActionController::TestCase
+
+  setup do
+    stub_requests
+  end
+
   test "should get index page" do
-    get :manufacturers
+    get :index
+
     assert_response :success
     assert_select "title", "Manufacturers"
   end
-  
-  test "should get help" do
-    get "manufacturer/mitsubishi"
+
+  test "should show a particular manufacturer" do
+    get :show, :params => {:manufacturer => "Skoda"}
+
     assert_response :success
-    assert_select "title", "Mitsubishi"
+    assert_select "title", "Skoda"
   end
 end

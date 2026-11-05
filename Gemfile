@@ -19,10 +19,6 @@ gem 'wikipedia-client'
 gem 'puma'
 gem 'newrelic_rpm'
 
-gem 'mutex_m'
-gem 'drb'
-gem 'json', '~> 2.6'
-
 gem 'sdoc', group: :doc
 
 group :development do

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.2'
 
-gem 'rails', '~> 7.1'
+gem 'rails', '~> 8.0'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
@@ -18,10 +18,6 @@ gem 'wikipedia-client'
 
 gem 'puma'
 gem 'newrelic_rpm'
-
-gem 'mutex_m'
-gem 'drb'
-gem 'json', '~> 2.6'
 
 gem 'sdoc', group: :doc
 
